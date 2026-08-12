@@ -1,0 +1,127 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+---
+
+<BaseLayout
+  title="Projects | Built By Raza"
+  description="Technology, architecture, cloud, AI infrastructure and DIY projects by Raza."
+>
+
+  <section class="hero">
+    <div class="container">
+      <p class="eyebrow">PROJECTS</p>
+
+      <h1>
+        Learning becomes more valuable when you build something with it.
+      </h1>
+
+      <p class="intro">
+        A collection of professional experience, technical experiments
+        and things I've built while learning.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <div class="section-heading">
+        <p class="eyebrow">TECHNOLOGY</p>
+        <h2>Architecture & Engineering</h2>
+      </div>
+
+      <div class="project-grid">
+
+        <ProjectCard
+          category="Cloud"
+          title="AWS Architecture Journey"
+          description="Documenting my hands-on journey through AWS architecture, networking and resilient cloud infrastructure."
+          status="In Progress"
+          href="/projects/aws-architecture"
+        />
+
+        <ProjectCard
+          category="AI Infrastructure"
+          title="AI Infrastructure Lab"
+          description="Exploring GPU networking, high-performance fabrics and the infrastructure behind modern AI systems."
+          status="Learning"
+        />
+
+        <ProjectCard
+          category="Networking"
+          title="Network Architecture Case Studies"
+          description="Architecture lessons and design decisions drawn from more than two decades working with networks and telecommunications."
+          status="Coming Soon"
+        />
+
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .hero {
+    padding: 120px 0 100px;
+  }
+
+  .eyebrow {
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    color: #6b7280;
+  }
+
+  h1 {
+    max-width: 1000px;
+    margin: 18px 0 24px;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    line-height: 1;
+    letter-spacing: -0.05em;
+  }
+
+  .intro {
+    max-width: 700px;
+    font-size: 1.2rem;
+    color: #4b5563;
+  }
+
+  .section {
+    padding: 90px 0;
+    background: #f7f7f8;
+  }
+
+  .section-heading {
+    margin-bottom: 45px;
+  }
+
+  h2 {
+    margin: 8px 0 0;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: 1.1;
+    letter-spacing: -0.035em;
+  }
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  @media (max-width: 900px) {
+    .project-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 620px) {
+    .hero {
+      padding: 80px 0;
+    }
+
+    .project-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,89 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  category: string;
+  status?: string;
+  href?: string;
+}
+
+const {
+  title,
+  description,
+  category,
+  status,
+  href = "#"
+} = Astro.props;
+---
+
+<article class="project-card">
+  <div class="project-meta">
+    <span>{category}</span>
+    {status && <span>{status}</span>}
+  </div>
+
+  <h3>{title}</h3>
+
+  <p>{description}</p>
+
+  <a href={href}>
+    View Project →
+  </a>
+</article>
+
+<style>
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 320px;
+    padding: 32px;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    background: #ffffff;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 35px rgba(17, 24, 39, 0.08);
+  }
+
+  .project-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 28px;
+    color: #6b7280;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  h3 {
+    margin: 0 0 14px;
+    font-size: 1.7rem;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    color: #111827;
+  }
+
+  p {
+    margin: 0 0 30px;
+    color: #6b7280;
+    line-height: 1.65;
+  }
+
+  a {
+    margin-top: auto;
+    color: #111827;
+    font-weight: 750;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+</style>

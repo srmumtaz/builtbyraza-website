@@ -1,0 +1,162 @@
+---
+const pathname = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <div class="container nav">
+    <a class="logo" href="/">Built By Raza</a>
+
+    <button
+      class="menu-button"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="desktop-nav">
+      <a class:list={{ active: pathname === "/story" }} href="/story">
+        My Story
+      </a>
+
+      <a class:list={{ active: pathname === "/technology" }} href="/technology">
+        Technology
+      </a>
+
+      <a class:list={{ active: pathname.startsWith("/projects") }} href="/projects">
+        Projects
+      </a>
+
+      <a class:list={{ active: pathname.startsWith("/interests") }} href="/#interests">
+        Interests
+      </a>
+
+      <a href="/#contact">Contact</a>
+    </nav>
+  </div>
+
+  <nav id="mobile-menu" class="mobile-nav">
+    <a href="/story">My Story</a>
+    <a href="/technology">Technology</a>
+    <a href="/projects">Projects</a>
+    <a href="/#interests">Interests</a>
+    <a href="/#contact">Contact</a>
+  </nav>
+</header>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const menuButton = document.querySelector<HTMLButtonElement>(".menu-button");
+    const mobileMenu = document.querySelector<HTMLElement>(".mobile-nav");
+
+    if (!menuButton || !mobileMenu) {
+      console.log("Mobile menu elements not found");
+      return;
+    }
+
+    menuButton.addEventListener("click", () => {
+      mobileMenu.classList.toggle("open");
+
+      const isOpen = mobileMenu.classList.contains("open");
+
+      menuButton.setAttribute(
+        "aria-expanded",
+        isOpen ? "true" : "false"
+      );
+    });
+  });
+</script>
+<style>
+  .container {
+    width: min(1120px, calc(100% - 40px));
+    margin: 0 auto;
+  }
+
+  .site-header {
+    border-bottom: 1px solid #e5e7eb;
+    background: rgba(255, 255, 255, 0.95);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .nav {
+    min-height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    color: #111827;
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  .desktop-nav {
+    display: flex;
+    gap: 28px;
+  }
+
+  .desktop-nav a,
+  .mobile-nav a {
+    color: #4b5563;
+    text-decoration: none;
+    font-size: 0.95rem;
+  }
+
+  .desktop-nav a:hover,
+  .mobile-nav a:hover {
+    color: #111827;
+  }
+
+  .desktop-nav a.active {
+    color: #111827;
+    font-weight: 700;
+  }
+
+  .menu-button {
+    display: none;
+    width: 42px;
+    height: 42px;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    padding: 8px;
+  }
+
+  .menu-button span {
+    display: block;
+    height: 2px;
+    background: #111827;
+    margin: 5px 0;
+  }
+
+  .mobile-nav {
+    display: none;
+    padding: 10px 20px 24px;
+    border-top: 1px solid #e5e7eb;
+    background: white;
+  }
+
+  .mobile-nav.open {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  @media (max-width: 760px) {
+    .desktop-nav {
+      display: none;
+    }
+
+    .menu-button {
+      display: block;
+    }
+  }
+</style>

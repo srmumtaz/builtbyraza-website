@@ -1,0 +1,281 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="AWS Architecture Journey | Built By Raza"
+  description="Documenting my hands-on journey through AWS architecture, cloud networking and resilient infrastructure."
+>
+
+  <section class="hero">
+    <div class="container narrow">
+      <p class="eyebrow">CLOUD · AWS</p>
+
+      <h1>
+        AWS Architecture Journey
+      </h1>
+
+      <p class="intro">
+        Building cloud architecture skills by designing, testing and
+        documenting real AWS environments.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split">
+      <div>
+        <p class="section-label">WHY I'M BUILDING THIS</p>
+        <h2>Extending a networking foundation into cloud architecture.</h2>
+      </div>
+
+      <div class="copy">
+        <p>
+          My background is in telecommunications, networking and solution
+          architecture. AWS is the next layer I’m adding to that foundation.
+        </p>
+
+        <p>
+          Rather than learning only for a certification exam, I want to build
+          real environments, understand the design decisions behind them and
+          document what happens when things work — and when they fail.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container">
+      <p class="section-label">PROJECT ROADMAP</p>
+      <h2>What I plan to build.</h2>
+
+      <div class="roadmap-grid">
+        <article class="roadmap-card">
+          <span>01</span>
+          <h3>Production-Style VPC</h3>
+          <p>
+            Public and private subnets, routing, Internet Gateway, NAT,
+            security groups and multi-AZ design.
+          </p>
+          <a href="/projects/aws-vpc-lab">View Lab →</a>
+        </article>
+
+        <article class="roadmap-card">
+          <span>02</span>
+          <h3>Highly Available Application</h3>
+          <p>
+            Load balancing, Auto Scaling, EC2 and resilient database design.
+          </p>
+        </article>
+
+        <article class="roadmap-card">
+          <span>03</span>
+          <h3>Multi-VPC Architecture</h3>
+          <p>
+            Production, development and shared-services VPCs connected
+            through Transit Gateway.
+          </p>
+        </article>
+
+        <article class="roadmap-card">
+          <span>04</span>
+          <h3>Hybrid Cloud</h3>
+          <p>
+            Connecting enterprise infrastructure to AWS using VPN,
+            Direct Connect concepts and BGP.
+          </p>
+        </article>
+
+        <article class="roadmap-card">
+          <span>05</span>
+          <h3>Infrastructure as Code</h3>
+          <p>
+            Rebuilding AWS environments using Terraform and reusable modules.
+          </p>
+        </article>
+
+        <article class="roadmap-card">
+          <span>06</span>
+          <h3>Cloud + AI Infrastructure</h3>
+          <p>
+            Exploring how cloud architecture connects to GPU workloads
+            and modern AI infrastructure.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split">
+      <div>
+        <p class="section-label">HOW I'M LEARNING</p>
+        <h2>Learn. Build. Break. Fix. Document.</h2>
+      </div>
+
+      <div class="copy">
+        <p>
+          For each topic, I plan to build a working environment first,
+          then deliberately test failure scenarios and routing behavior.
+        </p>
+
+        <p>
+          Each completed lab will include architecture diagrams,
+          design notes, lessons learned and eventually Terraform code
+          in GitHub.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container split">
+      <div>
+        <p class="section-label">CURRENT STATUS</p>
+        <h2>In progress.</h2>
+      </div>
+
+      <div class="status-box">
+        <p>Current focus</p>
+        <strong>AWS Solutions Architect – Associate</strong>
+
+        <p>Next build</p>
+        <strong>Production-Style AWS VPC</strong>
+
+        <p>Documentation</p>
+        <strong>Architecture diagrams + GitHub notes</strong>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .hero {
+    padding: 120px 0 105px;
+  }
+
+  .narrow {
+    max-width: 900px;
+  }
+
+  .eyebrow,
+  .section-label {
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    color: #6b7280;
+  }
+
+  h1 {
+    margin: 18px 0 24px;
+    font-size: clamp(3rem, 6vw, 5.7rem);
+    line-height: 1;
+    letter-spacing: -0.05em;
+  }
+
+  h2 {
+    margin: 8px 0 20px;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+  }
+
+  h3 {
+    margin: 14px 0 10px;
+    font-size: 1.3rem;
+  }
+
+  .intro {
+    max-width: 760px;
+    font-size: 1.25rem;
+    color: #4b5563;
+  }
+
+  .section {
+    padding: 95px 0;
+  }
+
+  .alt {
+    background: #f7f7f8;
+  }
+
+  .split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .copy p {
+    margin-top: 0;
+    margin-bottom: 22px;
+    font-size: 1.08rem;
+    color: #4b5563;
+  }
+
+  .roadmap-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    margin-top: 45px;
+  }
+
+  .roadmap-card {
+    padding: 28px;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    background: #ffffff;
+  }
+  .roadmap-card a {
+  display: inline-block;
+  margin-top: 10px;
+  color: #111827;
+  font-weight: 750;
+  text-decoration: none;
+}
+
+.roadmap-card a:hover {
+  text-decoration: underline;
+}
+
+  .roadmap-card span {
+    font-size: 0.8rem;
+    color: #9ca3af;
+    font-weight: 800;
+  }
+
+  .roadmap-card p {
+    color: #6b7280;
+  }
+
+  .status-box {
+    padding: 30px;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    background: white;
+  }
+
+  .status-box p {
+    margin: 0 0 4px;
+    color: #6b7280;
+    font-size: 0.85rem;
+  }
+
+  .status-box strong {
+    display: block;
+    margin-bottom: 22px;
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 850px) {
+    .split,
+    .roadmap-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .split {
+      gap: 24px;
+    }
+  }
+</style>

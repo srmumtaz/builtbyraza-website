@@ -1,0 +1,260 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="AWS VPC Lab | Built By Raza"
+  description="A production-style AWS VPC lab covering subnet design, routing, NAT, security and multi-AZ architecture."
+>
+  <section class="hero">
+    <div class="container narrow">
+      <p class="eyebrow">AWS LAB · 01</p>
+
+      <h1>Production-Style AWS VPC</h1>
+
+      <p class="intro">
+        Designing a resilient AWS VPC with public and private subnets,
+        controlled Internet access and a multi-AZ architecture.
+      </p>
+
+      <div class="meta">
+        <span>Status: Planned</span>
+        <span>Category: Cloud Networking</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container split">
+      <div>
+        <p class="section-label">THE GOAL</p>
+        <h2>Build the foundation correctly.</h2>
+      </div>
+
+      <div class="copy">
+        <p>
+          The goal of this lab is to build a production-style AWS network
+          rather than a single flat VPC.
+        </p>
+
+        <p>
+          The design will use multiple Availability Zones, separate public
+          and private subnets, controlled Internet access, routing and
+          security policies.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <p class="section-label">ARCHITECTURE</p>
+      <h2>Target design.</h2>
+
+      <div class="diagram-placeholder">
+        Architecture diagram will go here
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container">
+      <p class="section-label">DESIGN COMPONENTS</p>
+      <h2>What this lab will include.</h2>
+
+      <div class="grid">
+        <article class="card">
+          <span>01</span>
+          <h3>VPC & IP Plan</h3>
+          <p>Define CIDR space and subnet allocation for the environment.</p>
+        </article>
+
+        <article class="card">
+          <span>02</span>
+          <h3>Multi-AZ Subnets</h3>
+          <p>Deploy public and private subnets across multiple Availability Zones.</p>
+        </article>
+
+        <article class="card">
+          <span>03</span>
+          <h3>Routing</h3>
+          <p>Build route tables for public and private traffic flows.</p>
+        </article>
+
+        <article class="card">
+          <span>04</span>
+          <h3>Internet Access</h3>
+          <p>Use an Internet Gateway and NAT architecture for controlled access.</p>
+        </article>
+
+        <article class="card">
+          <span>05</span>
+          <h3>Security</h3>
+          <p>Compare Security Groups and Network ACL behavior.</p>
+        </article>
+
+        <article class="card">
+          <span>06</span>
+          <h3>Failure Testing</h3>
+          <p>Test what happens when components or paths become unavailable.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split">
+      <div>
+        <p class="section-label">DESIGN DECISIONS</p>
+        <h2>Why this architecture?</h2>
+      </div>
+
+      <div class="copy">
+        <p>
+          This section will document the reasoning behind subnet placement,
+          routing, Internet access and high-availability decisions.
+        </p>
+
+        <p>
+          The goal is not just to show what was configured, but why the
+          architecture was built that way.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container split">
+      <div>
+        <p class="section-label">LESSONS LEARNED</p>
+        <h2>What changed after building it.</h2>
+      </div>
+
+      <div class="copy">
+        <p>
+          This section will be updated after the lab is complete with
+          troubleshooting notes, unexpected behavior and design improvements.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    padding: 120px 0 100px;
+  }
+
+  .narrow {
+    max-width: 900px;
+  }
+
+  .eyebrow,
+  .section-label {
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    color: #6b7280;
+  }
+
+  h1 {
+    margin: 18px 0 24px;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    line-height: 1;
+    letter-spacing: -0.05em;
+  }
+
+  h2 {
+    margin: 8px 0 20px;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+  }
+
+  h3 {
+    margin: 14px 0 8px;
+    font-size: 1.3rem;
+  }
+
+  .intro {
+    max-width: 760px;
+    font-size: 1.2rem;
+    color: #4b5563;
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 28px;
+    color: #6b7280;
+    font-size: 0.9rem;
+  }
+
+  .section {
+    padding: 95px 0;
+  }
+
+  .alt {
+    background: #f7f7f8;
+  }
+
+  .split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+  }
+
+  .copy p {
+    margin-top: 0;
+    margin-bottom: 22px;
+    font-size: 1.08rem;
+    color: #4b5563;
+  }
+
+  .diagram-placeholder {
+    min-height: 360px;
+    display: grid;
+    place-items: center;
+    margin-top: 35px;
+    border: 2px dashed #d1d5db;
+    border-radius: 16px;
+    color: #9ca3af;
+    background: #fafafa;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    margin-top: 45px;
+  }
+
+  .card {
+    padding: 28px;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    background: white;
+  }
+
+  .card span {
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: #9ca3af;
+  }
+
+  .card p {
+    color: #6b7280;
+  }
+
+  @media (max-width: 850px) {
+    .split,
+    .grid {
+      grid-template-columns: 1fr;
+    }
+
+    .split {
+      gap: 24px;
+    }
+  }
+</style>

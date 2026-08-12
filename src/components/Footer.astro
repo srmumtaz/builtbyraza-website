@@ -1,0 +1,39 @@
+<footer>
+  <div class="container footer-content">
+    <div>
+      <strong>Built By Raza</strong>
+      <p>Build. Learn. Document. Share.</p>
+    </div>
+
+    <p>Built with Astro.</p>
+  </div>
+</footer>
+
+<style>
+  .container {
+    width: min(1120px, calc(100% - 40px));
+    margin: 0 auto;
+  }
+
+  footer {
+    padding: 55px 0;
+    border-top: 1px solid #e5e7eb;
+  }
+
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+  }
+
+  footer p {
+    color: #6b7280;
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 760px) {
+    .footer-content {
+      display: block;
+    }
+  }
+</style>
