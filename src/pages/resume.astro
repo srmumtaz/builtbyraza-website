@@ -1,0 +1,23 @@
+---
+// @ts-nocheck (Tina query data and local JSON share the same resume model)
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TinaIsland from '@tinacms/astro/TinaIsland.astro';
+import ResumePage from '../components/tina/ResumePage.astro';
+import { getSitePage } from '../lib/tina/data';
+import { islands } from '../lib/tina/islands';
+import localPage from '../../content/pages/resume.json';
+
+const slug = 'resume';
+let page = localPage;
+try {
+  const result = await getSitePage(slug);
+  const remotePage = result.data?.sitePage;
+  if (remotePage?.experience?.length) page = remotePage;
+} catch {}
+---
+
+<BaseLayout title={page.seoTitle} description={page.seoDescription}>
+  <TinaIsland name="resumePage" wrapper={islands.resumePage.wrapper} params={{ slug }} primary>
+    <ResumePage data={page} />
+  </TinaIsland>
+</BaseLayout>

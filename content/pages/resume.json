@@ -1,8 +1,59 @@
 {
-  "styleKey": "story",
+  "styleKey": "resume",
   "route": "/resume",
-  "seoTitle": "Resume | Built By Raza",
-  "seoDescription": "Professional experience, skills and certifications for Raza.",
-  "hero": { "eyebrow": "RESUME", "heading": "Experience, skills and certifications.", "introduction": "A professional overview of networking, telecommunications, solutions architecture and continued learning." },
-  "sections": [{ "layout": "split", "alternate": true, "eyebrow": "PROFESSIONAL PROFILE", "heading": "More than two decades of solving infrastructure problems.", "paragraphs": [{ "text": "This page presents professional experience, technical strengths, certifications and the areas I’m actively developing." }] }]
+  "seoTitle": "Syed Raza Mumtaz | Network Architect & Technical Leader",
+  "seoDescription": "Professional experience, technical leadership, education and certifications for Syed Raza Mumtaz, Principal Network Architect and Technical Leader.",
+  "hero": {
+    "eyebrow": "PROFESSIONAL RESUME",
+    "heading": "Syed Raza Mumtaz",
+    "introduction": "Principal Network Architect and Technical Leader with more than 20 years of experience designing, validating and operating carrier-grade, cloud, data-center and mission-critical networks.",
+    "meta": [
+      { "text": "Mississauga, Ontario" },
+      { "text": "CCIE Service Provider #36259" },
+      { "text": "20+ years of experience" }
+    ]
+  },
+  "linkedinUrl": "https://www.linkedin.com/in/srmumtaz/",
+  "contactEmail": "srmumtaz@hotmail.com",
+  "profile": [
+    "Network architect and technical leader experienced in IP/MPLS, cloud, data-center, optical and low-latency networking across carrier, enterprise and mission-critical environments.",
+    "Combines deep engineering knowledge with presales leadership, customer advisory, solution design, technical validation and team mentorship.",
+    "Known for translating complex requirements into resilient, practical architectures and guiding customers and engineering teams from concept through delivery."
+  ],
+  "expertise": [
+    "Solutions architecture and technical leadership",
+    "IP/MPLS, BGP, OSPF and traffic engineering",
+    "Cloud, data-center and colocation connectivity",
+    "Ethernet, dark fibre, DWDM/CWDM and GPON/FTTx",
+    "SDN, NFV and network automation",
+    "High availability, resiliency and disaster recovery",
+    "RFP/RFI leadership and customer advisory",
+    "Multi-vendor integration, PoCs, IVV&T and testing"
+  ],
+  "experience": [
+    { "employer": "Liberty Latin America", "title": "Manager, Sales Engineering (Wholesale)", "dates": "March 2025 - Present", "summary": ["Lead solution architecture for a multi-country, multi-region enterprise network spanning more than 1,000 locations across the Caribbean and Latin America.", "Direct strategic-account presales technical strategy and customer advocacy, aligning network solutions with business requirements and service objectives.", "Build and mentor engineering teams while overseeing technical reporting, budgeting and product-improvement initiatives."] },
+    { "employer": "C&W Communications", "title": "Senior Sales Engineer (Wholesale)", "dates": "March 2023 - March 2025", "summary": ["Designed regional and multinational connectivity solutions across wireless, terrestrial and subsea networks for carrier and enterprise customers.", "Led technical RFP and RFI responses and advised customers on architectures aligned with their operational and business goals."] },
+    { "employer": "Beanfield Metroconnect", "title": "Senior Customer Solutions Engineer, Pre-Sales", "dates": "March 2021 - April 2023", "summary": ["Engineered dark-fibre, DWDM/CWDM, GPON, cloud and data-center connectivity solutions for high-capacity enterprise and carrier requirements.", "Led RFP responses, technical presentations and implementation strategies while supporting sales, revenue assurance and cross-functional delivery."] },
+    { "employer": "Go Renovate", "title": "Managing Director", "dates": "July 2019 - March 2021", "summary": ["Directed renovation and construction projects from design and procurement through implementation and handover.", "Managed licensed trades, business development, cash flow and client relationships."] },
+    { "employer": "AcuityAds Inc.", "title": "Senior Engineer, Hybrid Cloud & Data Center Infrastructure", "dates": "December 2018 - June 2019", "summary": ["Managed global advertising-exchange connectivity and hybrid-cloud and colocation operations for latency-sensitive real-time bidding platforms.", "Optimized high-volume load balancing and network performance across distributed infrastructure."] },
+    { "employer": "Telesat Canada", "title": "Senior Network Design Engineer", "dates": "January 2017 - December 2018", "summary": ["Contributed network architecture and research-and-development work to Telesat's low-Earth-orbit satellite program.", "Led control- and data-plane design using open-source SDN/NFV frameworks and created constellation simulators and R&D testbeds.", "Delivered proof-of-concept designs, customer demonstrations, and network product and service definitions."] },
+    { "employer": "Allstream / Zayo Group", "title": "Technical Operations Specialist, Private Cloud Engineering", "dates": "October 2015 - October 2017", "summary": ["Managed multi-tenant cloud unified communications and Cisco data-center infrastructure, including Cisco Hosted Collaboration Solution environments.", "Delivered UCaaS, UCCX and HCS Expressway proofs of concept for enterprise customers."] },
+    { "employer": "Airbus Defence & Space", "title": "Manager, Operations, Military SATCOM", "dates": "May 2011 - October 2015", "summary": ["Provided technical and operational leadership for mission-critical military satellite communications supporting the UAE Armed Forces.", "Led an 18-engineer, 24x7 Network Operations Center focused on service availability and incident resolution.", "Directed automation, verification and validation, Tier-3 troubleshooting, and compliance with MILSATCOM and information-security standards."] },
+    { "employer": "du Telecom", "title": "Bitstream Network Engineer / Tier-3 Internet Core", "dates": "April 2009 - April 2011", "summary": ["Operated and optimized an IP/MPLS Internet backbone and GPON, FTTx and next-generation access networks.", "Performed BGP and OSPF traffic engineering, vendor interoperability testing, capacity planning and disaster-recovery work."] },
+    { "employer": "Catalyst IT Solutions", "title": "Network Analyst", "dates": "September 2004 - April 2009", "summary": ["Designed low-latency, high-availability trading networks for financial institutions.", "Strengthened resilience and redundancy for mission-critical financial-services operations."] }
+  ],
+  "education": [
+    { "credential": "MSc in Computer Networks", "institution": "Middlesex University, United Kingdom" },
+    { "credential": "B.Eng. in Information Technology", "institution": "Hamdard University, Pakistan" }
+  ],
+  "certifications": [
+    "Cisco Certified Internetwork Expert - CCIE Service Provider #36259",
+    "Cisco Certified Network Associate - CCNA",
+    "Cisco Certified Design Associate - CCDA",
+    "MEF Carrier Ethernet Certified Professional - MEF-CECP",
+    "Fortinet Certified Associate Cybersecurity - FCA",
+    "Fortinet Certified Fundamentals Cybersecurity - FCF",
+    "Cato Networks SASE Expert Level 1"
+  ],
+  "sections": []
 }

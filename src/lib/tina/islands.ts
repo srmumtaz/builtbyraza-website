@@ -10,9 +10,18 @@ import HomepageAbout from '../../components/tina/HomepageAbout.astro';
 import HomepageCardSection from '../../components/tina/HomepageCardSection.astro';
 import HomepageHero from '../../components/tina/HomepageHero.astro';
 import PostBody from '../../components/tina/PostBody.astro';
+import ResumePage from '../../components/tina/ResumePage.astro';
 import { getHomepage, getPost, getSitePage, getSiteSettings } from './data';
 
 export const islands: IslandRegistry = {
+  resumePage: {
+    fetch: (_request, params) => getSitePage(params.get('slug') ?? 'resume'),
+    component: ResumePage,
+    wrapper: { tag: 'div' },
+    propsFromData: (data) => ({
+      data: (data as QueryResult<SitePageQuery>).data?.sitePage,
+    }),
+  },
   homepageContact: {
     fetch: () => getHomepage(),
     component: ContactPage,

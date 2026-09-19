@@ -1,0 +1,146 @@
+---
+// @ts-nocheck (Tina-generated types update when the local editor restarts)
+import { tinaField } from '@tinacms/astro/tina-field';
+import { sanitizeHref } from '@tinacms/astro/sanitize';
+
+const { data } = Astro.props;
+---
+
+{data && (
+  <div class="resume-page">
+    <section class="resume-hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow" data-tina-field={tinaField(data.hero, 'eyebrow')}>{data.hero.eyebrow}</p>
+          <h1 data-tina-field={tinaField(data.hero, 'heading')}>{data.hero.heading}</h1>
+          <p class="role">Principal Network Architect <span>&</span> Technical Leader</p>
+          <p class="intro" data-tina-field={tinaField(data.hero, 'introduction')}>{data.hero.introduction}</p>
+          <div class="hero-actions">
+            <a class="primary-action" href={sanitizeHref(data.linkedinUrl, '#')} target="_blank" rel="noreferrer">View LinkedIn ↗</a>
+            <a class="secondary-action" href={`mailto:${data.contactEmail}`}>Contact Me</a>
+          </div>
+        </div>
+        <aside class="profile-card">
+          <span class="monogram">SR</span>
+          <div class="meta" data-tina-field={tinaField(data.hero, 'meta')}>
+            {data.hero.meta?.map((entry) => <p>{entry?.text}</p>)}
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="overview section">
+      <div class="container overview-grid">
+        <div><p class="eyebrow">PROFILE</p><h2>Architecture grounded in engineering.</h2></div>
+        <div class="profile-copy" data-tina-field={tinaField(data, 'profile')}>
+          {data.profile?.map((paragraph) => <p>{paragraph}</p>)}
+        </div>
+      </div>
+      <div class="container expertise-grid" data-tina-field={tinaField(data, 'expertise')}>
+        {data.expertise?.map((item, index) => (
+          <div class="expertise-item"><span>{String(index + 1).padStart(2, '0')}</span><p>{item}</p></div>
+        ))}
+      </div>
+    </section>
+
+    <section class="experience section">
+      <div class="container">
+        <div class="section-heading"><p class="eyebrow">PROFESSIONAL EXPERIENCE</p><h2>Two decades of building reliable networks.</h2></div>
+        <div class="timeline" data-tina-field={tinaField(data, 'experience')}>
+          {data.experience?.map((job, index) => (
+            <article class="job">
+              <div class="job-marker"><span>{String(data.experience.length - index).padStart(2, '0')}</span></div>
+              <div class="job-meta">
+                <p class="dates">{job?.dates}</p>
+                <h3>{job?.employer}</h3>
+                <p class="job-title">{job?.title}</p>
+              </div>
+              <ul>{job?.summary?.map((item) => <li>{item}</li>)}</ul>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="credentials section">
+      <div class="container credentials-grid">
+        <div>
+          <p class="eyebrow">EDUCATION</p>
+          <div class="credential-list" data-tina-field={tinaField(data, 'education')}>
+            {data.education?.map((item) => <article><h3>{item?.credential}</h3><p>{item?.institution}</p></article>)}
+          </div>
+        </div>
+        <div>
+          <p class="eyebrow">CERTIFICATIONS</p>
+          <div class="certification-list" data-tina-field={tinaField(data, 'certifications')}>
+            {data.certifications?.map((item) => <p>{item}</p>)}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="resume-cta">
+      <div class="container cta-inner">
+        <div><p class="eyebrow">LET'S CONNECT</p><h2>Interested in working together?</h2></div>
+        <div class="hero-actions">
+          <a class="primary-action" href={sanitizeHref(data.linkedinUrl, '#')} target="_blank" rel="noreferrer">LinkedIn Profile ↗</a>
+          <a class="secondary-action" href={`mailto:${data.contactEmail}`}>{data.contactEmail}</a>
+        </div>
+      </div>
+    </section>
+  </div>
+)}
+
+<style>
+  .container { width: min(1160px, calc(100% - 40px)); margin: 0 auto; }
+  .resume-page { color: #f1eadf; }
+  .resume-hero { padding: 110px 0 95px; background: radial-gradient(circle at 82% 20%, rgba(223,168,77,.12), transparent 28%), #0b0b0a; }
+  .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 80px; align-items: center; }
+  .eyebrow { margin: 0; color: #dfa84d; font-size: .75rem; font-weight: 800; letter-spacing: .18em; }
+  h1 { margin: 18px 0 12px; max-width: 800px; font-size: clamp(3.4rem, 7vw, 6.4rem); line-height: .93; letter-spacing: -.055em; }
+  .role { margin: 0 0 28px; color: #e7b45a; font-size: clamp(1rem, 2vw, 1.35rem); letter-spacing: .03em; }
+  .role span { color: #76644b; }
+  .intro { max-width: 790px; color: #bcb2a3; font-size: 1.16rem; line-height: 1.8; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+  .hero-actions a { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; padding: 0 22px; border-radius: 8px; font-weight: 750; text-decoration: none; }
+  .primary-action { color: #11100e; background: #e3aa49; }
+  .secondary-action { color: #e9b354; border: 1px solid #5b4324; background: #14130f; }
+  .profile-card { min-height: 330px; display: flex; flex-direction: column; justify-content: space-between; padding: 30px; border: 1px solid #513c20; border-radius: 18px; background: linear-gradient(145deg, #1b1914, #11100e); box-shadow: 0 24px 70px rgba(0,0,0,.25); }
+  .monogram { color: #e5ad4d; font-size: 5.4rem; font-weight: 900; line-height: 1; letter-spacing: -.08em; }
+  .meta p { margin: 9px 0 0; color: #bcb2a3; font-size: .84rem; }
+  .section { padding: 95px 0; }
+  h2 { margin: 10px 0 0; max-width: 680px; font-size: clamp(2.3rem, 4vw, 4rem); line-height: 1.04; letter-spacing: -.04em; }
+  .overview { border-top: 1px solid #2e271c; background: #12110e; }
+  .overview-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 90px; }
+  .profile-copy p { margin: 0 0 20px; color: #bcb2a3; font-size: 1.06rem; }
+  .expertise-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-top: 65px; background: #3b2d1b; border: 1px solid #3b2d1b; }
+  .expertise-item { min-height: 145px; padding: 23px; background: #171510; }
+  .expertise-item span { color: #8f7e64; font-size: .72rem; font-weight: 800; }
+  .expertise-item p { margin: 22px 0 0; font-weight: 650; line-height: 1.45; }
+  .experience { background: #0b0b0a; }
+  .section-heading { margin-bottom: 62px; }
+  .timeline { border-top: 1px solid #3d3020; }
+  .job { display: grid; grid-template-columns: 70px 340px 1fr; gap: 34px; padding: 42px 0; border-bottom: 1px solid #3d3020; }
+  .job-marker { position: relative; }
+  .job-marker::before { content: ''; position: absolute; top: 29px; left: 16px; bottom: -72px; width: 1px; background: #4d3a20; }
+  .job:last-child .job-marker::before { display: none; }
+  .job-marker span { position: relative; z-index: 1; display: grid; width: 34px; height: 34px; place-items: center; border: 1px solid #7a5728; border-radius: 50%; color: #dfa84d; background: #0b0b0a; font-size: .67rem; font-weight: 800; }
+  .dates { margin: 0 0 10px; color: #9e8f79; font-size: .78rem; font-weight: 750; letter-spacing: .07em; text-transform: uppercase; }
+  .job h3 { margin: 0 0 8px; font-size: 1.55rem; line-height: 1.15; }
+  .job-title { margin: 0; color: #e1aa4c; font-size: .95rem; }
+  .job ul { margin: 0; padding-left: 20px; color: #bcb2a3; }
+  .job li { margin-bottom: 10px; padding-left: 6px; }
+  .job li::marker { color: #ba8134; }
+  .credentials { background: #12110e; }
+  .credentials-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 90px; }
+  .credential-list, .certification-list { margin-top: 30px; border-top: 1px solid #46351f; }
+  .credential-list article, .certification-list p { margin: 0; padding: 22px 0; border-bottom: 1px solid #46351f; }
+  .credential-list h3 { margin: 0 0 6px; font-size: 1.16rem; }
+  .credential-list p, .certification-list p { color: #bcb2a3; }
+  .resume-cta { padding: 75px 0; border-top: 1px solid #3d3020; background: #0b0b0a; }
+  .cta-inner { display: flex; align-items: center; justify-content: space-between; gap: 50px; }
+  .cta-inner h2 { font-size: clamp(2rem, 4vw, 3.2rem); }
+  @media (max-width: 950px) { .hero-grid { grid-template-columns: 1fr; gap: 40px; } .profile-card { min-height: 220px; } .expertise-grid { grid-template-columns: repeat(2, 1fr); } .job { grid-template-columns: 50px 280px 1fr; gap: 22px; } }
+  @media (max-width: 760px) { .resume-hero { padding: 80px 0 70px; } .section { padding: 70px 0; } .overview-grid, .credentials-grid { grid-template-columns: 1fr; gap: 38px; } .job { grid-template-columns: 42px 1fr; } .job ul { grid-column: 2; } .cta-inner { align-items: flex-start; flex-direction: column; } }
+  @media (max-width: 520px) { .expertise-grid { grid-template-columns: 1fr; } .hero-actions { align-items: stretch; flex-direction: column; } .hero-actions a { width: 100%; } }
+</style>
