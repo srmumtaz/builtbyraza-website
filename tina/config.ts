@@ -219,6 +219,32 @@ export default defineConfig({
           { type: "string", name: "certifications", label: "Certifications", list: true },
           {
             type: "object",
+            name: "builderProject",
+            label: "Builder Years case study",
+            fields: [
+              { type: "image", name: "heroImage", label: "Hero image" },
+              { type: "string", name: "heroImageAlt", label: "Hero image description" },
+              { type: "string", name: "locationLabel", label: "Location label" },
+              { type: "string", name: "period", label: "Project period" },
+              { type: "string", name: "overviewTitle", label: "Overview heading", ui: { component: "textarea" } },
+              { type: "object", name: "overviewParagraphs", label: "Overview paragraphs", list: true, fields: [{ type: "string", name: "text", label: "Text", ui: { component: "textarea" } }] },
+              { type: "object", name: "metrics", label: "Project metrics", list: true, fields: [
+                { type: "string", name: "value", label: "Value" }, { type: "string", name: "label", label: "Label" }, { type: "string", name: "detail", label: "Detail" },
+              ] },
+              { type: "object", name: "transformations", label: "Transformation scope", list: true, fields: [
+                { type: "string", name: "title", label: "Title" }, { type: "string", name: "description", label: "Description", ui: { component: "textarea" } },
+              ] },
+              { type: "object", name: "comparisons", label: "Before and after comparisons", list: true, fields: [
+                { type: "string", name: "title", label: "Room title" }, { type: "string", name: "caption", label: "Story caption", ui: { component: "textarea" } },
+                { type: "image", name: "beforeImage", label: "Before image" }, { type: "string", name: "beforeAlt", label: "Before image description" },
+                { type: "image", name: "afterImage", label: "After image" }, { type: "string", name: "afterAlt", label: "After image description" },
+              ] },
+              { type: "string", name: "closingHeading", label: "Closing heading", ui: { component: "textarea" } },
+              { type: "string", name: "closingText", label: "Closing paragraph", ui: { component: "textarea" } },
+            ],
+          },
+          {
+            type: "object",
             name: "sections",
             label: "Sections",
             list: true,

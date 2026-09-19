@@ -3,6 +3,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import TinaIsland from '@tinacms/astro/TinaIsland.astro';
 import EditablePage from '../components/tina/EditablePage.astro';
+import BuilderYearsPage from '../components/tina/BuilderYearsPage.astro';
 import { getSitePage } from '../lib/tina/data';
 import { islands } from '../lib/tina/islands';
 import aboutRaza from '../../content/pages/about-raza.json';
@@ -55,7 +56,13 @@ page ??= localPages[slug];
 if (!page) return new Response('Page not found', { status: 404 });
 ---
 <BaseLayout title={page.seoTitle} description={page.seoDescription}>
-  <TinaIsland name="sitePage" wrapper={islands.sitePage.wrapper} params={{ slug }} primary>
-    <EditablePage data={page} />
-  </TinaIsland>
+  {slug === 'the-builder-years' ? (
+    <TinaIsland name="builderYearsPage" wrapper={islands.builderYearsPage.wrapper} params={{ slug }} primary>
+      <BuilderYearsPage data={page} />
+    </TinaIsland>
+  ) : (
+    <TinaIsland name="sitePage" wrapper={islands.sitePage.wrapper} params={{ slug }} primary>
+      <EditablePage data={page} />
+    </TinaIsland>
+  )}
 </BaseLayout>

@@ -3,6 +3,7 @@ import type { IslandRegistry } from '@tinacms/astro/experimental';
 import type { QueryResult } from '@tinacms/astro/data';
 import type { HomepageQuery, PostQuery, SitePageQuery, SiteSettingsQuery } from '../../../tina/__generated__/types';
 import EditablePage from '../../components/tina/EditablePage.astro';
+import BuilderYearsPage from '../../components/tina/BuilderYearsPage.astro';
 import ContactPage from '../../components/tina/ContactPage.astro';
 import Footer from '../../components/Footer.astro';
 import Header from '../../components/Header.astro';
@@ -14,6 +15,12 @@ import ResumePage from '../../components/tina/ResumePage.astro';
 import { getHomepage, getPost, getSitePage, getSiteSettings } from './data';
 
 export const islands: IslandRegistry = {
+  builderYearsPage: {
+    fetch: (_request, params) => getSitePage(params.get('slug') ?? 'the-builder-years'),
+    component: BuilderYearsPage,
+    wrapper: { tag: 'div' },
+    propsFromData: (data) => ({ data: (data as QueryResult<SitePageQuery>).data?.sitePage }),
+  },
   resumePage: {
     fetch: (_request, params) => getSitePage(params.get('slug') ?? 'resume'),
     component: ResumePage,

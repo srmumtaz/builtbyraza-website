@@ -1,8 +1,49 @@
 {
-  "styleKey": "story",
+  "styleKey": "builder-years",
   "route": "/the-builder-years",
-  "seoTitle": "The Builder Years | Built By Raza",
-  "seoDescription": "Renovations, trades and the hands-on builder years from 2018 to 2020.",
-  "hero": { "eyebrow": "THE BUILDER YEARS", "heading": "Learning by building with my own hands.", "introduction": "Renovations, trades and practical projects from 2018 to 2020." },
-  "sections": [{ "layout": "split", "alternate": true, "eyebrow": "2018–2020", "heading": "The years that strengthened the builder mindset.", "paragraphs": [{ "text": "This is where I document renovation work, lessons from the trades and the problem-solving that happens when plans meet the real world." }] }]
+  "seoTitle": "The Builder Years | A Complete Mississauga Home Transformation",
+  "seoDescription": "A before-and-after case study of a complete Mississauga home remodel—planned, built and transformed from 2018 to 2022.",
+  "hero": {
+    "eyebrow": "THE BUILDER YEARS · FEATURED PROJECT",
+    "heading": "From dated house to purposeful home.",
+    "introduction": "A complete Mississauga remodel that turned an established family house into a bright, modern and more capable home."
+  },
+  "sections": [],
+  "builderProject": {
+    "heroImage": "/images/builder-years/after-kitchen.jpg",
+    "heroImageAlt": "Completed modern kitchen with an oversized island, two-tone cabinetry and integrated appliances",
+    "locationLabel": "MISSISSAUGA, ONTARIO",
+    "period": "2018 — 2022",
+    "overviewTitle": "The potential was there. It needed a plan—and the courage to rebuild it.",
+    "overviewParagraphs": [
+      { "text": "The house had good bones, a generous lot and the right footprint, but its finishes and circulation belonged to another era. The goal was not to disguise that age. It was to rethink how the home should work for modern family life." },
+      { "text": "Over four years, the project evolved from a cosmetic renovation into a whole-home transformation: a brighter open main floor, a custom kitchen, rebuilt bathrooms, refreshed bedrooms, a redesigned staircase and a fully realized lower level with a separate entrance." },
+      { "text": "The work demanded the same disciplines I bring to complex technical architecture—clear requirements, sequencing, trade coordination, budget decisions, quality control and relentless problem-solving when the real world challenged the plan." }
+    ],
+    "metrics": [
+      { "value": "4 → 4+2", "label": "BEDROOMS", "detail": "Two additional lower-level rooms" },
+      { "value": "3 → 4", "label": "BATHROOMS", "detail": "Every bathroom renewed" },
+      { "value": "40 × 111", "label": "FOOT LOT", "detail": "A large established property" },
+      { "value": "4 DAYS", "label": "ON MARKET", "detail": "Sold in March 2022" }
+    ],
+    "transformations": [
+      { "title": "Open-plan main floor", "description": "Unified the living, dining and kitchen zones with consistent flooring, lighting and sightlines." },
+      { "title": "Custom kitchen", "description": "Created a large social island, quartz surfaces, two-tone cabinetry and significantly improved storage." },
+      { "title": "Architectural staircase", "description": "Reframed the arrival experience with dark treads, iron pickets and a cleaner contemporary profile." },
+      { "title": "Rebuilt bathrooms", "description": "Introduced full-height tile, glass enclosures, modern vanities and a calmer material palette." },
+      { "title": "Private lower level", "description": "Turned an open recreation basement into a finished two-bedroom suite with its own kitchen and bath." },
+      { "title": "Whole-home finish", "description": "Connected every room through new floors, doors, trim, lighting, paint and disciplined detailing." }
+    ],
+    "comparisons": [
+      { "title": "Exterior", "caption": "The familiar brick shell was retained while the entry and presentation became sharper and more contemporary.", "beforeImage": "/images/builder-years/before-exterior.jpg", "beforeAlt": "The detached brick home before renovation in summer", "afterImage": "/images/builder-years/after-exterior.jpg", "afterAlt": "The detached brick home after renovation in winter" },
+      { "title": "Arrival & staircase", "caption": "A dated oak stair and tiled hall became a crisp, high-contrast arrival with modern ironwork.", "beforeImage": "/images/builder-years/before-foyer.jpg", "beforeAlt": "Original foyer with oak staircase and ceramic floor", "afterImage": "/images/builder-years/after-foyer.jpg", "afterAlt": "Renovated foyer with dark staircase, iron pickets and new flooring" },
+      { "title": "Living room", "caption": "Walls, floors and lighting were unified to make the main level feel wider, brighter and intentional.", "beforeImage": "/images/builder-years/before-living.jpg", "beforeAlt": "Traditional living room before renovation", "afterImage": "/images/builder-years/after-living.jpg", "afterAlt": "Bright contemporary living room after renovation" },
+      { "title": "Kitchen", "caption": "The old galley became the centre of the home—open, functional and built around a generous island.", "beforeImage": "/images/builder-years/before-kitchen.jpg", "beforeAlt": "Original narrow kitchen with wood cabinets and ceramic floor", "afterImage": "/images/builder-years/after-kitchen.jpg", "afterAlt": "Modern open kitchen with quartz island and two-tone cabinetry" },
+      { "title": "Primary bedroom", "caption": "Heavy carpet and traditional furniture gave way to clean lines, durable flooring and a calmer retreat.", "beforeImage": "/images/builder-years/before-primary.jpg", "beforeAlt": "Carpeted primary bedroom before renovation", "afterImage": "/images/builder-years/after-primary.jpg", "afterAlt": "Renovated primary bedroom with modern flooring and neutral finishes" },
+      { "title": "Primary ensuite", "caption": "A compact dated shower room was rebuilt as a bright, refined ensuite with glass, tile and integrated lighting.", "beforeImage": "/images/builder-years/before-ensuite.jpg", "beforeAlt": "Small original ensuite before renovation", "afterImage": "/images/builder-years/after-ensuite.jpg", "afterAlt": "Renovated ensuite with illuminated mirror, double vanity and glass shower" },
+      { "title": "Lower level", "caption": "The open recreation room became a finished, purposeful living level supporting two additional bedrooms, a kitchen and bath.", "beforeImage": "/images/builder-years/before-lower-level.jpg", "beforeAlt": "Open green basement recreation room before renovation", "afterImage": "/images/builder-years/after-lower-level.jpg", "afterAlt": "Finished lower-level living room after renovation" }
+    ],
+    "closingHeading": "Building changed how I solve problems.",
+    "closingText": "A renovation makes every decision tangible. Measurements become walls. Trade-offs become daily experience. Quality—or the absence of it—remains visible for years. These builder years strengthened my bias toward practical plans, thoughtful sequencing and solutions that work beyond the drawing board."
+  }
 }
