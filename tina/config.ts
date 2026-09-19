@@ -239,6 +239,12 @@ export default defineConfig({
                 { type: "image", name: "beforeImage", label: "Before image" }, { type: "string", name: "beforeAlt", label: "Before image description" },
                 { type: "image", name: "afterImage", label: "After image" }, { type: "string", name: "afterAlt", label: "After image description" },
               ] },
+              { type: "object", name: "photoRepository", label: "Photo repository", fields: [
+                { type: "string", name: "heading", label: "Heading" },
+                { type: "string", name: "introduction", label: "Introduction", ui: { component: "textarea" } },
+                { type: "string", name: "originalLabel", label: "Original gallery label" },
+                { type: "string", name: "renovatedLabel", label: "Renovated gallery label" },
+              ] },
               { type: "string", name: "closingHeading", label: "Closing heading", ui: { component: "textarea" } },
               { type: "string", name: "closingText", label: "Closing paragraph", ui: { component: "textarea" } },
             ],

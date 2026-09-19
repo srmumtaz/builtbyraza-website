@@ -4,6 +4,14 @@ import { tinaField } from '@tinacms/astro/tina-field';
 
 const { data } = Astro.props;
 const project = data?.builderProject;
+const originalPhotos = Array.from({ length: 18 }, (_, index) => {
+  const number = index + 2;
+  return { src: `/images/builder-years/original-gallery/original-${String(number).padStart(2, '0')}.jpg`, alt: `Original house photograph ${number}` };
+});
+const renovatedPhotos = Array.from({ length: 39 }, (_, index) => {
+  const number = index + 2;
+  return { src: `/images/builder-years/renovated-gallery/renovated-${String(number).padStart(2, '0')}.jpg`, alt: `Renovated house photograph ${number}` };
+});
 ---
 
 {data && project && (
@@ -64,6 +72,32 @@ const project = data?.builderProject;
       </div>
     </section>
 
+    <section class="repository-section">
+      <div class="container repository-heading">
+        <p class="section-label">PHOTO REPOSITORY</p>
+        <h2 data-tina-field={tinaField(project.photoRepository, 'heading')}>{project.photoRepository?.heading}</h2>
+        <p data-tina-field={tinaField(project.photoRepository, 'introduction')}>{project.photoRepository?.introduction}</p>
+        <div class="gallery-tabs" role="tablist" aria-label="House photo collections">
+          <button class="gallery-tab active" type="button" role="tab" aria-selected="true" data-gallery-target="original-gallery">{project.photoRepository?.originalLabel} <span>{originalPhotos.length}</span></button>
+          <button class="gallery-tab" type="button" role="tab" aria-selected="false" data-gallery-target="renovated-gallery">{project.photoRepository?.renovatedLabel} <span>{renovatedPhotos.length}</span></button>
+        </div>
+      </div>
+      <div class="container gallery-panel active" id="original-gallery" role="tabpanel">
+        <div class="photo-grid">
+          {originalPhotos.map((photo) => <button class="photo-card" type="button" data-full-image={photo.src} data-full-alt={photo.alt}><img src={photo.src} alt={photo.alt} loading="lazy" /></button>)}
+        </div>
+      </div>
+      <div class="container gallery-panel" id="renovated-gallery" role="tabpanel" hidden>
+        <div class="photo-grid">
+          {renovatedPhotos.map((photo) => <button class="photo-card" type="button" data-full-image={photo.src} data-full-alt={photo.alt}><img src={photo.src} alt={photo.alt} loading="lazy" /></button>)}
+        </div>
+      </div>
+      <dialog class="photo-dialog">
+        <button class="dialog-close" type="button" aria-label="Close full-size photo">×</button>
+        <img src="" alt="" />
+      </dialog>
+    </section>
+
     <section class="closing-section">
       <div class="container closing-grid"><p class="section-label">WHAT IT BUILT IN ME</p><div><h2 data-tina-field={tinaField(project, 'closingHeading')}>{project.closingHeading}</h2><p data-tina-field={tinaField(project, 'closingText')}>{project.closingText}</p></div></div>
     </section>
@@ -75,6 +109,24 @@ const project = data?.builderProject;
     const slider = comparison.querySelector<HTMLInputElement>('.comparison-slider');
     slider?.addEventListener('input', () => comparison.style.setProperty('--position', `${slider.value}%`));
   });
+
+  const tabs = document.querySelectorAll<HTMLButtonElement>('.gallery-tab');
+  const panels = document.querySelectorAll<HTMLElement>('.gallery-panel');
+  tabs.forEach((tab) => tab.addEventListener('click', () => {
+    tabs.forEach((item) => { item.classList.toggle('active', item === tab); item.setAttribute('aria-selected', String(item === tab)); });
+    panels.forEach((panel) => { const active = panel.id === tab.dataset.galleryTarget; panel.classList.toggle('active', active); panel.hidden = !active; });
+  }));
+
+  const dialog = document.querySelector<HTMLDialogElement>('.photo-dialog');
+  const dialogImage = dialog?.querySelector<HTMLImageElement>('img');
+  document.querySelectorAll<HTMLButtonElement>('.photo-card').forEach((card) => card.addEventListener('click', () => {
+    if (!dialog || !dialogImage) return;
+    dialogImage.src = card.dataset.fullImage ?? '';
+    dialogImage.alt = card.dataset.fullAlt ?? '';
+    dialog.showModal();
+  }));
+  dialog?.querySelector<HTMLButtonElement>('.dialog-close')?.addEventListener('click', () => dialog.close());
+  dialog?.addEventListener('click', (event) => { if (event.target === dialog) dialog.close(); });
 </script>
 
 <style>
@@ -92,7 +144,7 @@ const project = data?.builderProject;
   .intro { max-width: 660px; margin: 0; color: #d0c6b6; font-size: clamp(1.05rem, 2vw, 1.35rem); }
   .hero-meta { display: flex; gap: 12px; margin-top: 34px; }
   .hero-meta span { padding: 8px 12px; border: 1px solid #6d4d24; border-radius: 999px; color: #e7aa47; background: rgba(12,12,10,.72); font-size: .75rem; font-weight: 800; letter-spacing: .08em; }
-  .project-intro, .scope-section, .comparisons-section, .closing-section { padding: 110px 0; }
+  .project-intro, .scope-section, .comparisons-section, .repository-section, .closing-section { padding: 110px 0; }
   .intro-grid, .closing-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 90px; }
   .story-copy p, .closing-grid p { margin: 0 0 22px; color: #bcb2a3; font-size: 1.1rem; }
   .metrics-section { border-top: 1px solid #332716; border-bottom: 1px solid #332716; background: #12110e; }
@@ -125,6 +177,21 @@ const project = data?.builderProject;
   .image-label { position: absolute; top: 18px; padding: 7px 10px; border-radius: 4px; color: #fff; background: rgba(9,9,8,.8); font-size: .68rem; font-weight: 900; letter-spacing: .13em; pointer-events: none; }
   .before-label { left: 18px; }
   .after-label { right: 18px; }
+  .repository-section { border-top: 1px solid #332716; background: #11100d; }
+  .repository-heading > p:not(.section-label) { max-width: 720px; color: #a99f90; font-size: 1.05rem; }
+  .gallery-tabs { display: flex; gap: 10px; margin: 38px 0 34px; }
+  .gallery-tab { padding: 12px 18px; border: 1px solid #4a371e; border-radius: 999px; color: #c5bbab; background: #17140f; font: inherit; font-size: .82rem; font-weight: 800; cursor: pointer; }
+  .gallery-tab span { margin-left: 7px; color: #8d816f; }
+  .gallery-tab:hover, .gallery-tab.active { border-color: #d99c3d; color: #11100d; background: #e7aa47; }
+  .gallery-tab.active span { color: #4f3714; }
+  .photo-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .photo-card { position: relative; aspect-ratio: 4 / 3; padding: 0; overflow: hidden; border: 1px solid #342817; border-radius: 9px; background: #090908; cursor: zoom-in; }
+  .photo-card img { width: 100%; height: 100%; display: block; object-fit: cover; transition: transform .25s ease, opacity .25s ease; }
+  .photo-card:hover img, .photo-card:focus-visible img { transform: scale(1.035); opacity: .82; }
+  .photo-dialog { width: min(1200px, calc(100% - 32px)); max-width: none; padding: 0; border: 1px solid #735326; border-radius: 12px; overflow: visible; background: #090908; }
+  .photo-dialog::backdrop { background: rgba(0,0,0,.88); backdrop-filter: blur(5px); }
+  .photo-dialog img { display: block; width: 100%; max-height: 88vh; object-fit: contain; border-radius: 11px; }
+  .dialog-close { position: absolute; top: -18px; right: -18px; z-index: 2; display: grid; width: 42px; height: 42px; place-items: center; border: 1px solid #765527; border-radius: 50%; color: #181108; background: #e7aa47; font-size: 1.7rem; line-height: 1; cursor: pointer; }
   .closing-section { border-top: 1px solid #332716; background: #12110e; }
   .closing-grid h2 { margin-top: 0; }
   @media (max-width: 900px) {
@@ -132,6 +199,7 @@ const project = data?.builderProject;
     .metric:nth-child(2) { border-right: 0; }
     .metric:nth-child(-n+2) { border-bottom: 1px solid #332716; }
     .scope-grid { grid-template-columns: 1fr 1fr; }
+    .photo-grid { grid-template-columns: repeat(3, 1fr); }
     .comparison-card { grid-template-columns: 1fr; gap: 18px; }
     .before-layer img { width: calc(100vw - 40px); max-width: none; }
   }
@@ -139,9 +207,13 @@ const project = data?.builderProject;
     .hero { min-height: 690px; }
     .hero-shade { background: linear-gradient(0deg, rgba(7,7,6,.97) 0%, rgba(7,7,6,.55) 65%, rgba(7,7,6,.2) 100%); }
     .hero-copy { padding-bottom: 62px; }
-    .project-intro, .scope-section, .comparisons-section, .closing-section { padding: 78px 0; }
+    .project-intro, .scope-section, .comparisons-section, .repository-section, .closing-section { padding: 78px 0; }
     .intro-grid, .closing-grid, .scope-grid { grid-template-columns: 1fr; gap: 26px; }
     .comparison-card { gap: 12px; }
     .before-after { aspect-ratio: 4 / 3; border-radius: 10px; }
+    .photo-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .gallery-tabs { align-items: stretch; }
+    .gallery-tab { flex: 1; padding: 11px 10px; }
+    .dialog-close { top: -14px; right: -8px; }
   }
 </style>
