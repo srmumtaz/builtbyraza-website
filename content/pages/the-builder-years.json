@@ -1,0 +1,8 @@
+{
+  "styleKey": "story",
+  "route": "/the-builder-years",
+  "seoTitle": "The Builder Years | Built By Raza",
+  "seoDescription": "Renovations, trades and the hands-on builder years from 2018 to 2020.",
+  "hero": { "eyebrow": "THE BUILDER YEARS", "heading": "Learning by building with my own hands.", "introduction": "Renovations, trades and practical projects from 2018 to 2020." },
+  "sections": [{ "layout": "split", "alternate": true, "eyebrow": "2018–2020", "heading": "The years that strengthened the builder mindset.", "paragraphs": [{ "text": "This is where I document renovation work, lessons from the trades and the problem-solving that happens when plans meet the real world." }] }]
+}

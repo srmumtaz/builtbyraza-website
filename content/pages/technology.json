@@ -1,0 +1,37 @@
+{
+  "styleKey": "technology",
+  "route": "/technology",
+  "seoTitle": "Technology | Built By Raza",
+  "seoDescription": "Technology, networking, cloud and AI infrastructure projects and learning from Built By Raza.",
+  "hero": {
+    "eyebrow": "TECHNOLOGY",
+    "heading": "Two decades of networking. The next chapter is cloud and AI infrastructure.",
+    "introduction": "This is where I document the technologies I work with, architectures I design and the areas I’m actively learning."
+  },
+  "sections": [
+    {
+      "layout": "cards", "alternate": true, "cardKind": "standard", "eyebrow": "AREAS OF FOCUS", "heading": "What I work on.",
+      "items": [
+        { "number": "01", "title": "Solutions Architecture", "description": "Turning business and technical requirements into practical, scalable infrastructure solutions." },
+        { "number": "02", "title": "Networking", "description": "IP networking, routing, service-provider infrastructure, connectivity and network architecture." },
+        { "number": "03", "title": "Cloud", "description": "AWS architecture, hybrid cloud, cloud networking and infrastructure design." },
+        { "number": "04", "title": "AI Infrastructure", "description": "GPU networking, RoCE, InfiniBand, scale-out fabrics and modern AI data-center architecture." },
+        { "number": "05", "title": "Automation", "description": "Infrastructure as Code, Terraform and tools that make infrastructure repeatable and easier to operate." }
+      ]
+    },
+    {
+      "layout": "list", "alternate": false, "eyebrow": "CURRENTLY LEARNING", "heading": "Building the next layer.",
+      "items": [
+        { "text": "AWS Solutions Architecture" }, { "text": "Terraform" }, { "text": "Kubernetes Networking" },
+        { "text": "AI Infrastructure Networking" }, { "text": "GPU Fabrics" }
+      ]
+    },
+    {
+      "layout": "split", "alternate": true, "eyebrow": "THE APPROACH", "heading": "Learn it. Build it. Break it. Explain it.",
+      "paragraphs": [
+        { "text": "I learn best by building real systems and testing how they behave." },
+        { "text": "The projects documented here are intended to show not only what I’ve studied, but how I think about architecture, trade-offs, failure scenarios and design decisions." }
+      ]
+    }
+  ]
+}

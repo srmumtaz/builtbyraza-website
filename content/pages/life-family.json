@@ -1,0 +1,8 @@
+{
+  "styleKey": "story",
+  "route": "/life-family",
+  "seoTitle": "Life & Family | Built By Raza",
+  "seoDescription": "Travel, goals, memories and the people behind Built By Raza.",
+  "hero": { "eyebrow": "LIFE & FAMILY", "heading": "The reason behind everything I build.", "introduction": "Travel, goals, memories and the family moments that matter most." },
+  "sections": [{ "layout": "split", "alternate": true, "eyebrow": "MY WHY", "heading": "Building a meaningful life together.", "paragraphs": [{ "text": "This page is for the experiences, lessons and memories that sit beyond technology and projects." }] }]
+}

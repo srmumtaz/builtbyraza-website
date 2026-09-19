@@ -1,0 +1,51 @@
+{
+  "styleKey": "aws-vpc-lab",
+  "route": "/projects/aws-vpc-lab",
+  "seoTitle": "AWS VPC Lab | Built By Raza",
+  "seoDescription": "A production-style AWS VPC lab covering subnet design, routing, NAT, security and multi-AZ architecture.",
+  "hero": {
+    "eyebrow": "AWS LAB · 01",
+    "heading": "Production-Style AWS VPC",
+    "introduction": "Designing a resilient AWS VPC with public and private subnets, controlled Internet access and a multi-AZ architecture.",
+    "meta": [
+      { "text": "Status: Planned" }, { "text": "Category: Cloud Networking" }
+    ]
+  },
+  "sections": [
+    {
+      "layout": "split", "alternate": true, "eyebrow": "THE GOAL", "heading": "Build the foundation correctly.",
+      "paragraphs": [
+        { "text": "The goal of this lab is to build a production-style AWS network rather than a single flat VPC." },
+        { "text": "The design will use multiple Availability Zones, separate public and private subnets, controlled Internet access, routing and security policies." }
+      ]
+    },
+    {
+      "layout": "diagram", "alternate": false, "eyebrow": "ARCHITECTURE", "heading": "Target design.",
+      "placeholder": "Architecture diagram will go here"
+    },
+    {
+      "layout": "cards", "alternate": true, "cardKind": "standard", "eyebrow": "DESIGN COMPONENTS", "heading": "What this lab will include.",
+      "items": [
+        { "number": "01", "title": "VPC & IP Plan", "description": "Define CIDR space and subnet allocation for the environment." },
+        { "number": "02", "title": "Multi-AZ Subnets", "description": "Deploy public and private subnets across multiple Availability Zones." },
+        { "number": "03", "title": "Routing", "description": "Build route tables for public and private traffic flows." },
+        { "number": "04", "title": "Internet Access", "description": "Use an Internet Gateway and NAT architecture for controlled access." },
+        { "number": "05", "title": "Security", "description": "Compare Security Groups and Network ACL behavior." },
+        { "number": "06", "title": "Failure Testing", "description": "Test what happens when components or paths become unavailable." }
+      ]
+    },
+    {
+      "layout": "split", "alternate": false, "eyebrow": "DESIGN DECISIONS", "heading": "Why this architecture?",
+      "paragraphs": [
+        { "text": "This section will document the reasoning behind subnet placement, routing, Internet access and high-availability decisions." },
+        { "text": "The goal is not just to show what was configured, but why the architecture was built that way." }
+      ]
+    },
+    {
+      "layout": "split", "alternate": true, "eyebrow": "LESSONS LEARNED", "heading": "What changed after building it.",
+      "paragraphs": [
+        { "text": "This section will be updated after the lab is complete with troubleshooting notes, unexpected behavior and design improvements." }
+      ]
+    }
+  ]
+}

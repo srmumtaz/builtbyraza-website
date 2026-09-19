@@ -1,0 +1,19 @@
+{
+  "brand": "Built By Raza",
+  "navigation": [
+    { "label": "Home", "href": "/" },
+    { "label": "Technology", "href": "/technology" },
+    { "label": "Builder Years", "href": "/the-builder-years" },
+    { "label": "Workshop", "href": "/workshop" },
+    { "label": "Photography", "href": "/photography" },
+    { "label": "Reefing", "href": "/reefing" },
+    { "label": "Gardening", "href": "/gardening" },
+    { "label": "Garage", "href": "/garage" },
+    { "label": "Life & Family", "href": "/life-family" },
+    { "label": "About Raza", "href": "/about-raza" },
+    { "label": "Resume", "href": "/resume" },
+    { "label": "Contact", "href": "/contact" }
+  ],
+  "footerTagline": "Build. Learn. Document. Share.",
+  "footerCredit": "Built with Astro."
+}

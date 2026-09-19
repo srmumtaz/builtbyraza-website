@@ -1,0 +1,8 @@
+{
+  "styleKey": "story",
+  "route": "/about-raza",
+  "seoTitle": "About Raza | Built By Raza",
+  "seoDescription": "Raza's story, values and lifelong journey of learning and building.",
+  "hero": { "eyebrow": "ABOUT RAZA", "heading": "Architect. Problem solver. Builder. Lifelong learner.", "introduction": "My story, values and the journey that connects technology, homes, ideas and family." },
+  "sections": [{ "layout": "split", "alternate": true, "eyebrow": "THE JOURNEY", "heading": "A life shaped by curiosity and practical work.", "paragraphs": [{ "text": "I’m a network architect, builder, photographer, tinkerer and lifelong learner. Built By Raza is the record of turning ideas into reality." }] }]
+}

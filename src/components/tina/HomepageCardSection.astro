@@ -1,0 +1,45 @@
+---
+// @ts-nocheck (generated types/client appear after tinacms dev/build runs)
+import { tinaField } from '@tinacms/astro/tina-field';
+import type { HomepageQuery } from '../../../tina/__generated__/types';
+
+interface Props {
+  data?: HomepageQuery['homepage'] | null;
+  kind: 'technology' | 'interests';
+}
+
+const { data, kind } = Astro.props;
+const eyebrowField = kind === 'technology' ? 'technologyEyebrow' : 'interestsEyebrow';
+const headingField = kind === 'technology' ? 'technologyHeading' : 'interestsHeading';
+const cardsField = kind === 'technology' ? 'technologyCards' : 'interestCards';
+const cards = data?.[cardsField];
+---
+{
+  data && (
+    <div class="container">
+      <p class="section-label" data-tina-field={tinaField(data, eyebrowField)}>{data[eyebrowField]}</p>
+      <h2 data-tina-field={tinaField(data, headingField)}>{data[headingField]}</h2>
+      <div class="card-grid" data-tina-field={tinaField(data, cardsField)}>
+        {cards?.map((card) => (
+          <article class="card">
+            <span>{card?.number}</span>
+            <h3>{card?.title}</h3>
+            <p>{card?.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+<style>
+  .container { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+  .section-label { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.16em; color: #6b7280; }
+  h2 { margin: 8px 0 20px; font-size: clamp(2rem, 4vw, 3.4rem); line-height: 1.08; letter-spacing: -0.035em; }
+  h3 { margin: 18px 0 8px; font-size: 1.4rem; }
+  .card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 48px; }
+  .card { min-height: 250px; padding: 28px; border: 1px solid #e5e7eb; border-radius: 14px; background: white; }
+  .card span { font-size: 0.8rem; color: #9ca3af; font-weight: 700; }
+  .card p { color: #6b7280; }
+  @media (max-width: 760px) { .card-grid { grid-template-columns: 1fr; } }
+</style>

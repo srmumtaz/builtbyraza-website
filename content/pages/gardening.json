@@ -1,0 +1,8 @@
+{
+  "styleKey": "technology",
+  "route": "/gardening",
+  "seoTitle": "Gardening | Built By Raza",
+  "seoDescription": "Indoor and outdoor gardening, growing and nurturing plants at Built By Raza.",
+  "hero": { "eyebrow": "GARDENING", "heading": "Grow. Observe. Adjust. Nurture.", "introduction": "Indoor and outdoor plants, landscaping, lawn care and experiments in the garden." },
+  "sections": [{ "layout": "split", "alternate": true, "eyebrow": "PLANTS & GARDEN", "heading": "Progress happens one season at a time.", "paragraphs": [{ "text": "This page follows plant care, garden projects and the small improvements that turn outdoor spaces into something personal." }] }]
+}

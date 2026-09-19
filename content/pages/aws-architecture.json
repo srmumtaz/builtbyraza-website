@@ -1,0 +1,46 @@
+{
+  "styleKey": "aws-architecture",
+  "route": "/projects/aws-architecture",
+  "seoTitle": "AWS Architecture Journey | Built By Raza",
+  "seoDescription": "Documenting my hands-on journey through AWS architecture, cloud networking and resilient infrastructure.",
+  "hero": {
+    "eyebrow": "CLOUD · AWS",
+    "heading": "AWS Architecture Journey",
+    "introduction": "Building cloud architecture skills by designing, testing and documenting real AWS environments."
+  },
+  "sections": [
+    {
+      "layout": "split", "alternate": false, "eyebrow": "WHY I'M BUILDING THIS", "heading": "Extending a networking foundation into cloud architecture.",
+      "paragraphs": [
+        { "text": "My background is in telecommunications, networking and solution architecture. AWS is the next layer I’m adding to that foundation." },
+        { "text": "Rather than learning only for a certification exam, I want to build real environments, understand the design decisions behind them and document what happens when things work — and when they fail." }
+      ]
+    },
+    {
+      "layout": "cards", "alternate": true, "cardKind": "roadmap", "eyebrow": "PROJECT ROADMAP", "heading": "What I plan to build.",
+      "items": [
+        { "number": "01", "title": "Production-Style VPC", "description": "Public and private subnets, routing, Internet Gateway, NAT, security groups and multi-AZ design.", "href": "/projects/aws-vpc-lab", "linkLabel": "View Lab →" },
+        { "number": "02", "title": "Highly Available Application", "description": "Load balancing, Auto Scaling, EC2 and resilient database design." },
+        { "number": "03", "title": "Multi-VPC Architecture", "description": "Production, development and shared-services VPCs connected through Transit Gateway." },
+        { "number": "04", "title": "Hybrid Cloud", "description": "Connecting enterprise infrastructure to AWS using VPN, Direct Connect concepts and BGP." },
+        { "number": "05", "title": "Infrastructure as Code", "description": "Rebuilding AWS environments using Terraform and reusable modules." },
+        { "number": "06", "title": "Cloud + AI Infrastructure", "description": "Exploring how cloud architecture connects to GPU workloads and modern AI infrastructure." }
+      ]
+    },
+    {
+      "layout": "split", "alternate": false, "eyebrow": "HOW I'M LEARNING", "heading": "Learn. Build. Break. Fix. Document.",
+      "paragraphs": [
+        { "text": "For each topic, I plan to build a working environment first, then deliberately test failure scenarios and routing behavior." },
+        { "text": "Each completed lab will include architecture diagrams, design notes, lessons learned and eventually Terraform code in GitHub." }
+      ]
+    },
+    {
+      "layout": "status", "alternate": true, "eyebrow": "CURRENT STATUS", "heading": "In progress.",
+      "items": [
+        { "label": "Current focus", "value": "AWS Solutions Architect – Associate" },
+        { "label": "Next build", "value": "Production-Style AWS VPC" },
+        { "label": "Documentation", "value": "Architecture diagrams + GitHub notes" }
+      ]
+    }
+  ]
+}

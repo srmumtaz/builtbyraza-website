@@ -1,0 +1,105 @@
+---
+// @ts-nocheck (generated types/client appear after tinacms dev/build runs)
+import { tinaField } from '@tinacms/astro/tina-field';
+import { sanitizeHref } from '@tinacms/astro/sanitize';
+import type { HomepageQuery } from '../../../tina/__generated__/types';
+
+interface Props {
+  data?: HomepageQuery['homepage'] | null;
+}
+
+const { data } = Astro.props;
+---
+{
+  data && (
+    <div class="container about-grid">
+      <div>
+        <p class="section-label" data-tina-field={tinaField(data, 'aboutEyebrow')}>
+          {data.aboutEyebrow}
+        </p>
+
+        <h2 data-tina-field={tinaField(data, 'aboutHeading')}>
+          {data.aboutHeading}
+        </h2>
+      </div>
+
+      <div class="about-copy">
+        <p data-tina-field={tinaField(data, 'aboutParagraph1')}>{data.aboutParagraph1}</p>
+        <p data-tina-field={tinaField(data, 'aboutParagraph2')}>{data.aboutParagraph2}</p>
+        <p data-tina-field={tinaField(data, 'aboutParagraph3')}>{data.aboutParagraph3}</p>
+
+        {data.aboutLink?.label && (
+          <a
+            class="text-link"
+            href={sanitizeHref(data.aboutLink.href, '/story')}
+            data-tina-field={tinaField(data.aboutLink, 'label')}
+          >
+            {data.aboutLink.label}
+          </a>
+        )}
+      </div>
+    </div>
+  )
+}
+
+<style>
+  .container {
+    width: min(1120px, calc(100% - 40px));
+    margin: 0 auto;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .section-label {
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    color: #6b7280;
+  }
+
+  h2 {
+    margin: 8px 0 20px;
+    font-size: clamp(2rem, 4vw, 3.4rem);
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+  }
+
+  .about-copy {
+    padding-top: 34px;
+  }
+
+  .about-copy p {
+    margin-top: 0;
+    margin-bottom: 22px;
+    font-size: 1.08rem;
+    color: #4b5563;
+  }
+
+  .text-link {
+    display: inline-block;
+    margin-top: 8px;
+    color: #111827;
+    font-weight: 750;
+    text-decoration: none;
+  }
+
+  .text-link:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 760px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .about-copy {
+      padding-top: 0;
+    }
+  }
+</style>

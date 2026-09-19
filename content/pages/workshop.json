@@ -1,0 +1,8 @@
+{
+  "styleKey": "technology",
+  "route": "/workshop",
+  "seoTitle": "The Workshop | Built By Raza",
+  "seoDescription": "DIY, electronics, projects and repairs from the Built By Raza workshop.",
+  "hero": { "eyebrow": "THE WORKSHOP", "heading": "Make. Repair. Improve.", "introduction": "DIY projects, electronics, experiments and repairs built around the house and in the workshop." },
+  "sections": [{ "layout": "split", "alternate": true, "eyebrow": "PROJECTS & REPAIRS", "heading": "A practical place for ideas.", "paragraphs": [{ "text": "The workshop is where ideas become prototypes, broken things get another chance and useful skills grow one project at a time." }] }]
+}

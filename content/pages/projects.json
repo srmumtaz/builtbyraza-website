@@ -1,0 +1,21 @@
+{
+  "styleKey": "projects",
+  "route": "/projects",
+  "seoTitle": "Projects | Built By Raza",
+  "seoDescription": "Technology, architecture, cloud, AI infrastructure and DIY projects by Raza.",
+  "hero": {
+    "eyebrow": "PROJECTS",
+    "heading": "Learning becomes more valuable when you build something with it.",
+    "introduction": "A collection of professional experience, technical experiments and things I've built while learning."
+  },
+  "sections": [
+    {
+      "layout": "cards", "alternate": true, "cardKind": "project", "eyebrow": "TECHNOLOGY", "heading": "Architecture & Engineering",
+      "items": [
+        { "category": "Cloud", "title": "AWS Architecture Journey", "description": "Documenting my hands-on journey through AWS architecture, networking and resilient cloud infrastructure.", "status": "In Progress", "href": "/projects/aws-architecture", "linkLabel": "View Project →" },
+        { "category": "AI Infrastructure", "title": "AI Infrastructure Lab", "description": "Exploring GPU networking, high-performance fabrics and the infrastructure behind modern AI systems.", "status": "Learning", "href": "#", "linkLabel": "View Project →" },
+        { "category": "Networking", "title": "Network Architecture Case Studies", "description": "Architecture lessons and design decisions drawn from more than two decades working with networks and telecommunications.", "status": "Coming Soon", "href": "#", "linkLabel": "View Project →" }
+      ]
+    }
+  ]
+}

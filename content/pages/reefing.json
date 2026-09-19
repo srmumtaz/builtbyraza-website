@@ -1,0 +1,8 @@
+{
+  "styleKey": "technology",
+  "route": "/reefing",
+  "seoTitle": "Reefing | Built By Raza",
+  "seoDescription": "Reef tanks, livestock, setup and aquarium evolution at Built By Raza.",
+  "hero": { "eyebrow": "REEFING", "heading": "Building a small living ecosystem.", "introduction": "Reef tanks, livestock, water chemistry, setup decisions and the evolution of the aquarium." },
+  "sections": [{ "layout": "split", "alternate": true, "eyebrow": "REEF TANK", "heading": "Patience, balance and continuous learning.", "paragraphs": [{ "text": "This page documents the aquarium setup, coral and livestock care, maintenance routines and the experiments that help the reef improve." }] }]
+}

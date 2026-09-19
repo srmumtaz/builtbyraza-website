@@ -1,10 +1,25 @@
 ---
+// @ts-nocheck (generated types/client appear after tinacms dev/build runs)
+import { tinaField } from '@tinacms/astro/tina-field';
+import { sanitizeHref } from '@tinacms/astro/sanitize';
+import type { SiteSettingsQuery } from '../../tina/__generated__/types';
+
+interface Props {
+  data?: SiteSettingsQuery['siteSettings'] | null;
+}
+
+const { data } = Astro.props;
 const pathname = Astro.url.pathname;
+const isActive = (href?: string | null) => {
+  if (!href) return false;
+  if (href === '/projects') return pathname.startsWith('/projects');
+  return pathname === href;
+};
 ---
 
 <header class="site-header">
   <div class="container nav">
-    <a class="logo" href="/">Built By Raza</a>
+    <a class="logo" href="/" data-tina-field={data && tinaField(data, 'brand')}>{data?.brand}</a>
 
     <button
       class="menu-button"
@@ -18,33 +33,17 @@ const pathname = Astro.url.pathname;
       <span></span>
     </button>
 
-    <nav class="desktop-nav">
-      <a class:list={{ active: pathname === "/story" }} href="/story">
-        My Story
-      </a>
-
-      <a class:list={{ active: pathname === "/technology" }} href="/technology">
-        Technology
-      </a>
-
-      <a class:list={{ active: pathname.startsWith("/projects") }} href="/projects">
-        Projects
-      </a>
-
-      <a class:list={{ active: pathname.startsWith("/interests") }} href="/#interests">
-        Interests
-      </a>
-
-      <a href="/#contact">Contact</a>
+    <nav class="desktop-nav" data-tina-field={data && tinaField(data, 'navigation')}>
+      {data?.navigation?.map((item) => (
+        <a class:list={{ active: isActive(item?.href) }} href={sanitizeHref(item?.href, '/')}>{item?.label}</a>
+      ))}
     </nav>
   </div>
 
-  <nav id="mobile-menu" class="mobile-nav">
-    <a href="/story">My Story</a>
-    <a href="/technology">Technology</a>
-    <a href="/projects">Projects</a>
-    <a href="/#interests">Interests</a>
-    <a href="/#contact">Contact</a>
+  <nav id="mobile-menu" class="mobile-nav" data-tina-field={data && tinaField(data, 'navigation')}>
+    {data?.navigation?.map((item) => (
+      <a href={sanitizeHref(item?.href, '/')}>{item?.label}</a>
+    ))}
   </nav>
 </header>
 
@@ -72,13 +71,13 @@ const pathname = Astro.url.pathname;
 </script>
 <style>
   .container {
-    width: min(1120px, calc(100% - 40px));
+    width: min(1440px, calc(100% - 40px));
     margin: 0 auto;
   }
 
   .site-header {
-    border-bottom: 1px solid #e5e7eb;
-    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid #3a2b17;
+    background: rgba(14, 14, 13, 0.96);
     position: sticky;
     top: 0;
     z-index: 10;
@@ -92,7 +91,7 @@ const pathname = Astro.url.pathname;
   }
 
   .logo {
-    color: #111827;
+    color: #e9b354;
     font-size: 1.1rem;
     font-weight: 800;
     text-decoration: none;
@@ -100,23 +99,23 @@ const pathname = Astro.url.pathname;
 
   .desktop-nav {
     display: flex;
-    gap: 28px;
+    gap: 18px;
   }
 
   .desktop-nav a,
   .mobile-nav a {
-    color: #4b5563;
+    color: #c7bdaa;
     text-decoration: none;
-    font-size: 0.95rem;
+    font-size: 0.8rem;
   }
 
   .desktop-nav a:hover,
   .mobile-nav a:hover {
-    color: #111827;
+    color: #e9b354;
   }
 
   .desktop-nav a.active {
-    color: #111827;
+    color: #e9b354;
     font-weight: 700;
   }
 
@@ -133,15 +132,15 @@ const pathname = Astro.url.pathname;
   .menu-button span {
     display: block;
     height: 2px;
-    background: #111827;
+    background: #e9b354;
     margin: 5px 0;
   }
 
   .mobile-nav {
     display: none;
     padding: 10px 20px 24px;
-    border-top: 1px solid #e5e7eb;
-    background: white;
+    border-top: 1px solid #3a2b17;
+    background: #11110f;
   }
 
   .mobile-nav.open {

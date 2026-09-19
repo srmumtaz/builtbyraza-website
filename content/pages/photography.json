@@ -1,0 +1,8 @@
+{
+  "styleKey": "technology",
+  "route": "/photography",
+  "seoTitle": "Photography | Built By Raza",
+  "seoDescription": "Photography galleries, camera gear and visual stories by Raza.",
+  "hero": { "eyebrow": "PHOTOGRAPHY", "heading": "Capture the details worth remembering.", "introduction": "Galleries, camera gear and visual stories from everyday life and travel." },
+  "sections": [{ "layout": "split", "alternate": true, "eyebrow": "VISUAL STORIES", "heading": "Photography is another way of building a story.", "paragraphs": [{ "text": "This page will collect photographs, equipment notes and the lessons learned while creating images." }] }]
+}

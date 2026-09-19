@@ -1,11 +1,22 @@
+---
+// @ts-nocheck (generated types/client appear after tinacms dev/build runs)
+import { tinaField } from '@tinacms/astro/tina-field';
+import type { SiteSettingsQuery } from '../../tina/__generated__/types';
+
+interface Props {
+  data?: SiteSettingsQuery['siteSettings'] | null;
+}
+
+const { data } = Astro.props;
+---
 <footer>
   <div class="container footer-content">
     <div>
-      <strong>Built By Raza</strong>
-      <p>Build. Learn. Document. Share.</p>
+      <strong data-tina-field={data && tinaField(data, 'brand')}>{data?.brand}</strong>
+      <p data-tina-field={data && tinaField(data, 'footerTagline')}>{data?.footerTagline}</p>
     </div>
 
-    <p>Built with Astro.</p>
+    <p data-tina-field={data && tinaField(data, 'footerCredit')}>{data?.footerCredit}</p>
   </div>
 </footer>
 
@@ -17,7 +28,9 @@
 
   footer {
     padding: 55px 0;
-    border-top: 1px solid #e5e7eb;
+    border-top: 1px solid #3a2b17;
+    background: #080807;
+    color: #f1eadf;
   }
 
   .footer-content {
@@ -27,7 +40,7 @@
   }
 
   footer p {
-    color: #6b7280;
+    color: #a99f90;
     margin-bottom: 0;
   }
 

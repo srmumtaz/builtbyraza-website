@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TinaIsland from '@tinacms/astro/TinaIsland.astro';
+import ContactPage from '../components/tina/ContactPage.astro';
+import { getHomepage } from '../lib/tina/data';
+import { islands } from '../lib/tina/islands';
+import * as homepageDocument from '../../content/homepage/hero.md';
+
+let content = homepageDocument.frontmatter;
+try {
+  const result = await getHomepage();
+  content = result.data?.homepage ?? content;
+} catch {}
+---
+<BaseLayout title="Contact | Built By Raza" description={content.contactIntroduction ?? 'Contact Built By Raza.'}>
+  <TinaIsland name="homepageContact" wrapper={islands.homepageContact.wrapper} primary>
+    <ContactPage data={content} />
+  </TinaIsland>
+</BaseLayout>

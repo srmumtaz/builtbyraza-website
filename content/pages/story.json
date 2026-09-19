@@ -1,0 +1,66 @@
+{
+  "styleKey": "story",
+  "route": "/story",
+  "seoTitle": "My Story | Built By Raza",
+  "seoDescription": "The story behind Built By Raza — a career in networking, telecommunications, solution architecture, learning and building.",
+  "hero": {
+    "eyebrow": "MY STORY",
+    "heading": "From building networks to designing solutions.",
+    "introduction": "My journey through more than two decades of networking, telecommunications and technology — and why I still consider myself a student of the industry."
+  },
+  "sections": [
+    {
+      "layout": "split", "alternate": false, "eyebrow": "2004 · THE BEGINNING", "heading": "It started with networking.",
+      "paragraphs": [
+        { "text": "I began my career in networking in 2004. What started as a profession quickly became something I genuinely enjoyed: understanding how systems communicate, how networks are built, and how technology can be used to solve real problems." },
+        { "text": "Those early years gave me the technical foundation that would shape the rest of my career." }
+      ]
+    },
+    {
+      "layout": "split", "alternate": true, "eyebrow": "2009 · DUBAI", "heading": "Into the Internet backbone.",
+      "paragraphs": [
+        { "text": "In 2009, I joined a large Internet service provider in Dubai, working as an engineer in its Internet backbone department." },
+        { "text": "This was where networking moved from theory and smaller environments into large-scale telecommunications infrastructure. Working around an ISP backbone gave me firsthand experience with the systems and engineering decisions that keep large networks connected." }
+      ]
+    },
+    {
+      "layout": "split", "alternate": false, "eyebrow": "A MAJOR MILESTONE", "heading": "Earning my CCIE.",
+      "paragraphs": [
+        { "text": "One of the milestones I'm most proud of is earning my Cisco Certified Internetwork Expert certification." },
+        { "text": "For me, the CCIE represented more than passing an exam. It was the result of years of study, hands-on experience and a commitment to understanding networking at a much deeper level." }
+      ]
+    },
+    {
+      "layout": "split", "alternate": true, "eyebrow": "SATELLITE NETWORKS", "heading": "A project that stayed with me.",
+      "paragraphs": [
+        { "text": "Another particularly meaningful chapter of my career was working on satellite networking for Airbus in Abu Dhabi." },
+        { "text": "It gave me the opportunity to apply my networking background in a very different environment and work on complex communications infrastructure where reliability, architecture and engineering all had to come together." },
+        { "text": "It remains one of the projects I am most proud to have been involved with." }
+      ]
+    },
+    {
+      "layout": "split", "alternate": false, "eyebrow": "2021 · A NEW PERSPECTIVE", "heading": "From engineering networks to designing solutions.",
+      "paragraphs": [
+        { "text": "In 2021, my career began moving into pre-sales engineering and solution architecture." },
+        { "text": "The focus became broader. Instead of looking only at the technology, I was increasingly starting with the customer: understanding the problem, identifying the requirements and designing the right solution." },
+        { "text": "It brought together years of engineering experience with another side of technology that I enjoy — turning complex technical ideas into practical solutions." }
+      ]
+    },
+    {
+      "layout": "split", "alternate": true, "eyebrow": "TODAY · STILL LEARNING", "heading": "The next chapter is already being built.",
+      "paragraphs": [
+        { "text": "Technology doesn't stand still, and neither should an architect." },
+        { "text": "Today I'm building on my networking and solution architecture experience by going deeper into cloud, automation and AI infrastructure." },
+        { "text": "I don't see this as starting over. I see it as adding new layers to the foundation I've spent more than two decades building." }
+      ]
+    },
+    {
+      "layout": "split", "alternate": false, "eyebrow": "BEYOND TECHNOLOGY", "heading": "The builder mindset doesn't stop at work.",
+      "paragraphs": [
+        { "text": "My curiosity isn't limited to networks and technology. I enjoy reef aquariums, gardening, DIY projects and figuring out how to fix or improve things around the house." },
+        { "text": "The subject may be completely different, but I often find myself following the same process: understand how something works, identify the problem, experiment, learn and improve it." },
+        { "text": "That's really what Built By Raza is about." }
+      ]
+    }
+  ]
+}

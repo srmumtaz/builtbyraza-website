@@ -1,0 +1,8 @@
+{
+  "styleKey": "technology",
+  "route": "/garage",
+  "seoTitle": "Garage | Built By Raza",
+  "seoDescription": "Audi Q8 e-tron, Lexus TX500h and automotive detailing projects.",
+  "hero": { "eyebrow": "GARAGE", "heading": "Drive. Detail. Protect. Enjoy.", "introduction": "The Audi Q8 e-tron, Lexus TX500h, detailing work and automotive projects." },
+  "sections": [{ "layout": "split", "alternate": true, "eyebrow": "CARS & DETAILING", "heading": "Care is in the details.", "paragraphs": [{ "text": "This page documents vehicle ownership, detailing methods, products, maintenance and garage projects." }] }]
+}

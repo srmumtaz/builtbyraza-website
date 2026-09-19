@@ -1,0 +1,187 @@
+---
+// @ts-nocheck (generated types/client appear after tinacms dev/build runs)
+import { tinaField } from '@tinacms/astro/tina-field';
+import type { HomepageQuery } from '../../../tina/__generated__/types';
+
+interface Props {
+  data?: HomepageQuery['homepage'] | null;
+}
+
+const { data } = Astro.props;
+const eyebrow = data?.contactEyebrow ?? 'CONTACT';
+const heading = data?.contactHeading ?? "Let's connect.";
+const introduction = data?.contactIntroduction ?? 'A place for professional conversations, collaboration and project enquiries.';
+const email = data?.contactEmail ?? 'srmumtaz@hotmail.com';
+const location = data?.contactLocation ?? 'Mississauga, Ontario';
+const endpoint = `https://formsubmit.co/ajax/${email}`;
+---
+{
+  data && (
+    <div class="contact-page">
+      <section class="contact-hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow" data-tina-field={tinaField(data, 'contactEyebrow')}>{eyebrow}</p>
+            <h1 data-tina-field={tinaField(data, 'contactHeading')}>{heading}</h1>
+            <p class="intro" data-tina-field={tinaField(data, 'contactIntroduction')}>{introduction}</p>
+          </div>
+
+          <div class="contact-details" aria-label="Contact details">
+            <div class="detail-card">
+              <span class="detail-icon" aria-hidden="true">✉</span>
+              <div>
+                <p>Email</p>
+                <a href={`mailto:${email}`} data-tina-field={tinaField(data, 'contactEmail')}>{email}</a>
+              </div>
+            </div>
+            <div class="detail-card">
+              <span class="detail-icon" aria-hidden="true">⌖</span>
+              <div>
+                <p>Location</p>
+                <strong data-tina-field={tinaField(data, 'contactLocation')}>{location}</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="form-section">
+        <div class="container form-grid">
+          <div class="form-intro">
+            <p class="eyebrow">SEND A MESSAGE</p>
+            <h2>What would you like to discuss?</h2>
+            <p>Complete the form and your message will be delivered directly to my inbox.</p>
+          </div>
+
+          <form id="contact-form" class="message-form" data-endpoint={endpoint} novalidate>
+            <input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <input type="hidden" name="_subject" value="New message from BuiltByRaza.ca" />
+            <input type="hidden" name="_template" value="table" />
+
+            <div class="field-row">
+              <label>
+                <span>Name</span>
+                <input type="text" name="name" autocomplete="name" required placeholder="Your name" />
+              </label>
+              <label>
+                <span>Email</span>
+                <input type="email" name="email" autocomplete="email" required placeholder="you@example.com" />
+              </label>
+            </div>
+
+            <label>
+              <span>Subject</span>
+              <input type="text" name="subject" required placeholder="What is this about?" />
+            </label>
+
+            <label>
+              <span>Message</span>
+              <textarea name="message" rows="7" required placeholder="Write your message here..."></textarea>
+            </label>
+
+            <div class="form-footer">
+              <button type="submit">Send message <span aria-hidden="true">→</span></button>
+              <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+            </div>
+          </form>
+        </div>
+      </section>
+    </div>
+  )
+}
+
+<script>
+  const setupContactForm = () => {
+    const form = document.querySelector<HTMLFormElement>('#contact-form');
+    if (!form || form.dataset.bound === 'true') return;
+    form.dataset.bound = 'true';
+
+    const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+    const status = form.querySelector<HTMLElement>('#form-status');
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      if (!form.reportValidity() || !button || !status) return;
+
+      button.disabled = true;
+      button.textContent = 'Sending…';
+      status.className = 'form-status';
+      status.textContent = '';
+
+      const values = Object.fromEntries(new FormData(form).entries());
+
+      try {
+        const response = await fetch(form.dataset.endpoint ?? '', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify(values),
+        });
+        const result = await response.json();
+        if (!response.ok || result.success === false) throw new Error(result.message || 'Unable to send message');
+
+        form.reset();
+        status.className = 'form-status success';
+        status.textContent = 'Thank you—your message has been sent.';
+      } catch {
+        status.className = 'form-status error';
+        status.textContent = 'Your message could not be sent. Please email me directly instead.';
+      } finally {
+        button.disabled = false;
+        button.innerHTML = 'Send message <span aria-hidden="true">→</span>';
+      }
+    });
+  };
+
+  setupContactForm();
+  document.addEventListener('astro:page-load', setupContactForm);
+</script>
+
+<style>
+  .contact-page { background: #0b0b0a; color: #f1eadf; }
+  .container { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+  .contact-hero { padding: 110px 0 90px; background: radial-gradient(circle at 75% 20%, #2a2115 0%, #13110d 42%, #090909 100%); border-bottom: 1px solid #46351d; }
+  .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 90px; align-items: end; }
+  .eyebrow { margin: 0 0 14px; font-size: 0.78rem; font-weight: 800; letter-spacing: 0.18em; color: #e0a646; }
+  h1 { margin: 0 0 24px; font-size: clamp(3.5rem, 7vw, 6.5rem); line-height: 0.95; letter-spacing: -0.055em; }
+  .intro { max-width: 640px; margin: 0; font-size: 1.25rem; color: #bcb2a3; }
+  .contact-details { display: grid; gap: 14px; }
+  .detail-card { display: flex; gap: 18px; align-items: center; padding: 22px 24px; border: 1px solid #503a1d; border-radius: 14px; background: rgba(25, 23, 18, 0.88); }
+  .detail-icon { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid #c88e35; border-radius: 50%; color: #e0a646; font-size: 1.3rem; }
+  .detail-card p { margin: 0 0 2px; color: #9d9283; font-size: 0.78rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
+  .detail-card a, .detail-card strong { color: #f1eadf; font-size: 1.05rem; font-weight: 700; text-decoration: none; }
+  .detail-card a:hover { text-decoration: underline; }
+  .form-section { padding: 95px 0 120px; }
+  .form-grid { display: grid; grid-template-columns: 0.75fr 1.25fr; gap: 80px; align-items: start; }
+  .form-intro { position: sticky; top: 110px; }
+  h2 { margin: 0 0 18px; font-size: clamp(2.2rem, 4vw, 3.5rem); line-height: 1.05; letter-spacing: -0.04em; }
+  .form-intro > p:last-child { color: #aaa091; font-size: 1.08rem; }
+  .message-form { padding: 36px; border: 1px solid #49371e; border-radius: 18px; background: #171612; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.32); }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  label { display: block; margin-bottom: 20px; }
+  label > span { display: block; margin-bottom: 8px; font-size: 0.82rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+  input, textarea { width: 100%; border: 1px solid #4e402d; border-radius: 10px; background: #0e0e0c; color: #f1eadf; font: inherit; outline: none; transition: border-color 160ms ease, box-shadow 160ms ease; }
+  input { height: 50px; padding: 0 15px; }
+  textarea { min-height: 170px; padding: 14px 15px; resize: vertical; }
+  input:focus, textarea:focus { border-color: #d49a3f; box-shadow: 0 0 0 3px rgba(212, 154, 63, 0.16); }
+  .form-footer { display: flex; align-items: center; gap: 20px; min-height: 52px; }
+  button { min-width: 175px; height: 50px; padding: 0 20px; border: 1px solid #d49a3f; border-radius: 10px; background: #d49a3f; color: #11100e; font: inherit; font-weight: 800; cursor: pointer; }
+  button:hover { background: #edb658; }
+  button:disabled { cursor: wait; opacity: 0.65; }
+  .form-status { margin: 0; font-size: 0.95rem; }
+  .form-status.success { color: #27613d; }
+  .form-status.error { color: #9b3129; }
+  .honeypot { position: absolute !important; left: -9999px !important; width: 1px !important; height: 1px !important; }
+
+  @media (max-width: 800px) {
+    .contact-hero { padding: 80px 0 70px; }
+    .hero-grid, .form-grid { grid-template-columns: 1fr; gap: 48px; }
+    .form-intro { position: static; }
+    .field-row { grid-template-columns: 1fr; gap: 0; }
+  }
+
+  @media (max-width: 520px) {
+    .message-form { padding: 24px 18px; }
+    .form-footer { align-items: flex-start; flex-direction: column; }
+    button { width: 100%; }
+  }
+</style>

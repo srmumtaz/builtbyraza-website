@@ -1,0 +1,8 @@
+{
+  "styleKey": "story",
+  "route": "/resume",
+  "seoTitle": "Resume | Built By Raza",
+  "seoDescription": "Professional experience, skills and certifications for Raza.",
+  "hero": { "eyebrow": "RESUME", "heading": "Experience, skills and certifications.", "introduction": "A professional overview of networking, telecommunications, solutions architecture and continued learning." },
+  "sections": [{ "layout": "split", "alternate": true, "eyebrow": "PROFESSIONAL PROFILE", "heading": "More than two decades of solving infrastructure problems.", "paragraphs": [{ "text": "This page presents professional experience, technical strengths, certifications and the areas I’m actively developing." }] }]
+}

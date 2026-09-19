@@ -1,0 +1,62 @@
+---
+// @ts-nocheck (Tina query data and local JSON share the same page model)
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TinaIsland from '@tinacms/astro/TinaIsland.astro';
+import EditablePage from '../components/tina/EditablePage.astro';
+import { getSitePage } from '../lib/tina/data';
+import { islands } from '../lib/tina/islands';
+import aboutRaza from '../../content/pages/about-raza.json';
+import garage from '../../content/pages/garage.json';
+import gardening from '../../content/pages/gardening.json';
+import lifeFamily from '../../content/pages/life-family.json';
+import photography from '../../content/pages/photography.json';
+import reefing from '../../content/pages/reefing.json';
+import resume from '../../content/pages/resume.json';
+import builderYears from '../../content/pages/the-builder-years.json';
+import workshop from '../../content/pages/workshop.json';
+
+const localPages = {
+  'about-raza': aboutRaza,
+  garage,
+  gardening,
+  'life-family': lifeFamily,
+  photography,
+  reefing,
+  resume,
+  'the-builder-years': builderYears,
+  workshop,
+};
+
+export function getStaticPaths() {
+  return [
+    'about-raza',
+    'garage',
+    'gardening',
+    'life-family',
+    'photography',
+    'reefing',
+    'resume',
+    'the-builder-years',
+    'workshop',
+  ].map((slug) => ({ params: { slug } }));
+}
+
+const slug = Astro.params.slug;
+if (!slug) return new Response('Page not found', { status: 404 });
+
+let page;
+try {
+  const result = await getSitePage(slug);
+  page = result.data?.sitePage;
+} catch {
+  page = localPages[slug];
+}
+
+page ??= localPages[slug];
+if (!page) return new Response('Page not found', { status: 404 });
+---
+<BaseLayout title={page.seoTitle} description={page.seoDescription}>
+  <TinaIsland name="sitePage" wrapper={islands.sitePage.wrapper} params={{ slug }} primary>
+    <EditablePage data={page} />
+  </TinaIsland>
+</BaseLayout>
