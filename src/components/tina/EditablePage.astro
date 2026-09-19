@@ -9,6 +9,11 @@ interface Props {
 }
 
 const { data } = Astro.props;
+
+const gardeningImages = Array.from({ length: 19 }, (_, index) => ({
+  src: `/images/gardening/gallery/garden-${String(index + 1).padStart(2, '0')}.webp`,
+  alt: `Plant and garden photograph ${index + 1}`,
+}));
 ---
 {
   data && (
@@ -96,9 +101,58 @@ const { data } = Astro.props;
           )}
         </section>
       ))}
+
+      {data.styleKey === 'gardening' && (
+        <section class="garden-gallery-section" aria-labelledby="garden-gallery-title">
+          <div class="container">
+            <div class="garden-gallery-heading">
+              <div>
+                <p class="section-label">FROM MY GARDEN</p>
+                <h2 id="garden-gallery-title">A living collection.</h2>
+              </div>
+              <p>Plants I have grown, collected and cared for—each one part of an ongoing experiment in patience, observation and growth.</p>
+            </div>
+            <div class="garden-gallery">
+              {gardeningImages.map((image, index) => (
+                <button class:list={['garden-photo', { wide: index === 4 || index === 13 }]} type="button" data-garden-image={image.src} aria-label={`Enlarge ${image.alt}`}>
+                  <img src={image.src} alt={image.alt} loading={index < 4 ? 'eager' : 'lazy'} decoding="async" />
+                  <span>View photo</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {data.styleKey === 'gardening' && (
+        <dialog class="garden-lightbox" aria-label="Enlarged garden photograph">
+          <button class="garden-lightbox-close" type="button" aria-label="Close enlarged photograph">×</button>
+          <img src="" alt="" />
+        </dialog>
+      )}
     </div>
   )
 }
+
+<script>
+  const lightbox = document.querySelector<HTMLDialogElement>('.garden-lightbox');
+  const lightboxImage = lightbox?.querySelector<HTMLImageElement>('img');
+  const closeButton = lightbox?.querySelector<HTMLButtonElement>('.garden-lightbox-close');
+
+  document.querySelectorAll<HTMLButtonElement>('[data-garden-image]').forEach((button) => {
+    button.addEventListener('click', () => {
+      if (!lightbox || !lightboxImage) return;
+      lightboxImage.src = button.dataset.gardenImage ?? '';
+      lightboxImage.alt = button.querySelector('img')?.alt ?? 'Garden photograph';
+      lightbox.showModal();
+    });
+  });
+
+  closeButton?.addEventListener('click', () => lightbox?.close());
+  lightbox?.addEventListener('click', (event) => {
+    if (event.target === lightbox) lightbox.close();
+  });
+</script>
 
 <style>
   .container { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
@@ -135,6 +189,23 @@ const { data } = Astro.props;
   .project-card a { margin-top: auto; color: #e9b354; font-weight: 750; text-decoration: none; }
   .project-card a:hover { text-decoration: underline; }
 
+  .garden-gallery-section { padding: 100px 0 120px; background: linear-gradient(180deg, #0f0e0c 0%, #15120d 100%); }
+  .garden-gallery-heading { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 70px; align-items: end; margin-bottom: 44px; }
+  .garden-gallery-heading h2 { margin-bottom: 0; }
+  .garden-gallery-heading > p { max-width: 520px; margin: 0 0 4px; color: #bcb2a3; font-size: 1.05rem; line-height: 1.75; }
+  .garden-gallery { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-flow: dense; gap: 14px; }
+  .garden-photo { position: relative; min-height: 390px; padding: 0; overflow: hidden; border: 1px solid #49371e; border-radius: 12px; background: #171612; cursor: zoom-in; }
+  .garden-photo.wide { grid-column: span 2; }
+  .garden-photo img { width: 100%; height: 100%; min-height: 390px; display: block; object-fit: cover; transition: transform .45s ease, filter .45s ease; }
+  .garden-photo span { position: absolute; right: 14px; bottom: 14px; padding: 7px 11px; border: 1px solid rgba(231, 170, 71, .55); border-radius: 999px; color: #f6d69e; background: rgba(10, 9, 7, .78); font-size: .7rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; opacity: 0; transform: translateY(6px); transition: opacity .25s ease, transform .25s ease; }
+  .garden-photo:hover img { transform: scale(1.035); filter: brightness(.78); }
+  .garden-photo:hover span, .garden-photo:focus-visible span { opacity: 1; transform: translateY(0); }
+  .garden-photo:focus-visible { outline: 2px solid #e7aa47; outline-offset: 3px; }
+  .garden-lightbox { width: min(1100px, calc(100% - 32px)); max-width: none; height: min(88vh, 900px); padding: 0; overflow: hidden; border: 1px solid #65491f; border-radius: 16px; background: #0b0a08; box-shadow: 0 28px 90px rgba(0, 0, 0, .72); }
+  .garden-lightbox::backdrop { background: rgba(0, 0, 0, .84); backdrop-filter: blur(5px); }
+  .garden-lightbox img { width: 100%; height: 100%; display: block; object-fit: contain; }
+  .garden-lightbox-close { position: absolute; z-index: 2; top: 14px; right: 14px; width: 42px; height: 42px; border: 1px solid #6a4b20; border-radius: 50%; color: #fff4df; background: rgba(12, 10, 7, .86); font-size: 1.7rem; line-height: 1; cursor: pointer; }
+
   .story .hero-container { max-width: 850px; }
   .story .split { grid-template-columns: 1.05fr 0.95fr; }
   .story h2 { margin-bottom: 0; }
@@ -156,6 +227,7 @@ const { data } = Astro.props;
 
   @media (max-width: 900px) {
     .projects .cards-grid { grid-template-columns: 1fr 1fr; }
+    .garden-gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   }
   @media (max-width: 850px) {
     .aws-architecture .split, .aws-architecture .cards-grid,
@@ -166,8 +238,15 @@ const { data } = Astro.props;
     .hero { padding: 80px 0; }
     .story .split, .technology .split, .technology .cards-grid { grid-template-columns: 1fr; }
     .story .split, .technology .split { gap: 24px; }
+    .garden-gallery-heading { grid-template-columns: 1fr; gap: 18px; }
+    .garden-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .garden-photo, .garden-photo img { min-height: 340px; }
   }
   @media (max-width: 620px) {
     .projects .cards-grid { grid-template-columns: 1fr; }
+    .garden-gallery-section { padding: 72px 0 90px; }
+    .garden-gallery { grid-template-columns: 1fr; gap: 12px; }
+    .garden-photo.wide { grid-column: auto; }
+    .garden-photo, .garden-photo img { min-height: 460px; }
   }
 </style>
