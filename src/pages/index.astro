@@ -48,9 +48,9 @@ const hotspots = [
       />
 
       <nav aria-label="Homepage visual navigation">
-        {hotspots.map((hotspot) => (
+        {hotspots.map((hotspot, index) => (
           <a
-            class="hotspot"
+            class:list={['hotspot', { 'top-nav-hotspot': index >= 2 && index <= 13 }]}
             href={hotspot.href}
             aria-label={hotspot.label}
             title={hotspot.label}
@@ -101,12 +101,39 @@ const hotspots = [
     transition: border-color 160ms ease, background-color 160ms ease, box-shadow 160ms ease;
   }
 
+  .top-nav-hotspot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
   .hotspot:hover,
   .hotspot:focus-visible {
     border-color: rgba(235, 173, 72, 0.95);
     background: rgba(235, 173, 72, 0.1);
     box-shadow: 0 0 18px rgba(235, 157, 43, 0.42);
     outline: none;
+  }
+
+  .top-nav-hotspot:hover,
+  .top-nav-hotspot:focus-visible {
+    background: rgba(13, 13, 12, 0.92);
+  }
+
+  .top-nav-hotspot:hover .sr-only,
+  .top-nav-hotspot:focus-visible .sr-only {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: nowrap;
+    color: #efb84f;
+    font-size: clamp(0.58rem, 0.72vw, 0.8rem);
+    font-weight: 600;
+    line-height: 1;
   }
 
   .sr-only {
