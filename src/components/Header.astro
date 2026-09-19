@@ -46,6 +46,7 @@ const isActive = (href?: string | null) => {
     ))}
   </nav>
 </header>
+<div class="site-header-spacer" aria-hidden="true"></div>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
@@ -78,9 +79,18 @@ const isActive = (href?: string | null) => {
   .site-header {
     border-bottom: 1px solid #3a2b17;
     background: rgba(14, 14, 13, 0.96);
-    position: sticky;
+    position: fixed;
     top: 0;
-    z-index: 10;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .site-header-spacer {
+    height: 73px;
   }
 
   .nav {
