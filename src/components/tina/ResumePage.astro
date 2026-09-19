@@ -52,7 +52,6 @@ const { data } = Astro.props;
             <article class="job">
               <div class="job-marker"><span>{String(data.experience.length - index).padStart(2, '0')}</span></div>
               <div class="job-meta">
-                <span class="company-logo" aria-hidden="true">{job?.logo ?? job?.employer?.slice(0, 2)}</span>
                 <p class="dates">{job?.dates}</p>
                 <h3>{job?.employer}</h3>
                 <p class="job-title">{job?.title}</p>
@@ -129,7 +128,6 @@ const { data } = Astro.props;
   .job:last-child .job-marker::before { display: none; }
   .job-marker span { position: relative; z-index: 1; display: grid; width: 34px; height: 34px; place-items: center; border: 1px solid #7a5728; border-radius: 50%; color: #dfa84d; background: #0b0b0a; font-size: .67rem; font-weight: 800; }
   .dates { margin: 0 0 10px; color: #9e8f79; font-size: .78rem; font-weight: 750; letter-spacing: .07em; text-transform: uppercase; }
-  .company-logo { display: inline-grid; min-width: 50px; height: 36px; place-items: center; margin-bottom: 18px; padding: 0 11px; border: 1px solid #6d4f27; border-radius: 7px; color: #efb34e; background: linear-gradient(145deg, #1d1a14, #12110e); font-size: .78rem; font-weight: 900; letter-spacing: .06em; box-shadow: inset 0 0 0 1px rgba(239,179,78,.05); }
   .job h3 { margin: 0 0 8px; font-size: 1.55rem; line-height: 1.15; }
   .job-title { margin: 0; color: #e1aa4c; font-size: .95rem; }
   .job ul { margin: 0; padding-left: 20px; color: #bcb2a3; }

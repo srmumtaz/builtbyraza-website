@@ -200,7 +200,6 @@ export default defineConfig({
             label: "Professional experience",
             list: true,
             fields: [
-              { type: "string", name: "logo", label: "Logo initials" },
               { type: "string", name: "employer", label: "Employer", required: true },
               { type: "string", name: "title", label: "Job title", required: true },
               { type: "string", name: "dates", label: "Dates", required: true },
