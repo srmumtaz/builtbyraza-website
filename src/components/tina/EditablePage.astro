@@ -10,9 +10,11 @@ interface Props {
 
 const { data } = Astro.props;
 
-const gardeningImages = Array.from({ length: 20 }, (_, index) => ({
-  src: `/images/gardening/gallery/garden-${String(index + 1).padStart(2, '0')}.webp`,
-  alt: `Plant and garden photograph ${index + 1}`,
+const gardeningImageNumbers = [20, ...Array.from({ length: 19 }, (_, index) => index + 1)];
+
+const gardeningImages = gardeningImageNumbers.map((imageNumber) => ({
+  src: `/images/gardening/gallery/garden-${String(imageNumber).padStart(2, '0')}.webp`,
+  alt: `Plant and garden photograph ${imageNumber}`,
 }));
 ---
 {
