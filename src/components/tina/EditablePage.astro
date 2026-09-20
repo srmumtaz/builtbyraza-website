@@ -12,10 +12,15 @@ const { data } = Astro.props;
 
 const gardeningImageNumbers = [20, ...Array.from({ length: 19 }, (_, index) => index + 1)];
 
-const gardeningImages = gardeningImageNumbers.map((imageNumber) => ({
-  src: `/images/gardening/gallery/garden-${String(imageNumber).padStart(2, '0')}.webp`,
-  alt: `Plant and garden photograph ${imageNumber}`,
-}));
+const gardeningImages = gardeningImageNumbers.map((imageNumber) => {
+  const title = imageNumber === 20 ? 'Ficus bonsai on my work desk' : undefined;
+
+  return {
+    src: `/images/gardening/gallery/garden-${String(imageNumber).padStart(2, '0')}.webp`,
+    alt: title ?? `Plant and garden photograph ${imageNumber}`,
+    title,
+  };
+});
 ---
 {
   data && (
@@ -118,7 +123,7 @@ const gardeningImages = gardeningImageNumbers.map((imageNumber) => ({
               {gardeningImages.map((image, index) => (
                 <button class:list={['garden-photo', { wide: index === 4 || index === 13 }]} type="button" data-garden-image={image.src} aria-label={`Enlarge ${image.alt}`}>
                   <img src={image.src} alt={image.alt} loading={index < 4 ? 'eager' : 'lazy'} decoding="async" />
-                  <span>View photo</span>
+                  <span>{image.title ?? 'View photo'}</span>
                 </button>
               ))}
             </div>
