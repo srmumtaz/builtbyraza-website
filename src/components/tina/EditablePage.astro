@@ -121,7 +121,7 @@ const gardeningImages = gardeningImageNumbers.map((imageNumber) => {
             </div>
             <div class="garden-gallery">
               {gardeningImages.map((image, index) => (
-                <button class:list={['garden-photo', { wide: index === 4 || index === 13 }]} type="button" data-garden-image={image.src} aria-label={`Enlarge ${image.alt}`}>
+                <button class:list={['garden-photo', { wide: index === 4 || index === 13 }]} type="button" data-garden-image={image.src} data-garden-title={image.title} aria-label={`Enlarge ${image.alt}`}>
                   <img src={image.src} alt={image.alt} loading={index < 4 ? 'eager' : 'lazy'} decoding="async" />
                   <span>{image.title ?? 'View photo'}</span>
                 </button>
@@ -135,6 +135,7 @@ const gardeningImages = gardeningImageNumbers.map((imageNumber) => {
         <dialog class="garden-lightbox" aria-label="Enlarged garden photograph">
           <button class="garden-lightbox-close" type="button" aria-label="Close enlarged photograph">×</button>
           <img src="" alt="" />
+          <p class="garden-lightbox-caption" hidden></p>
         </dialog>
       )}
     </div>
@@ -144,6 +145,7 @@ const gardeningImages = gardeningImageNumbers.map((imageNumber) => {
 <script>
   const lightbox = document.querySelector<HTMLDialogElement>('.garden-lightbox');
   const lightboxImage = lightbox?.querySelector<HTMLImageElement>('img');
+  const lightboxCaption = lightbox?.querySelector<HTMLParagraphElement>('.garden-lightbox-caption');
   const closeButton = lightbox?.querySelector<HTMLButtonElement>('.garden-lightbox-close');
 
   document.querySelectorAll<HTMLButtonElement>('[data-garden-image]').forEach((button) => {
@@ -151,6 +153,11 @@ const gardeningImages = gardeningImageNumbers.map((imageNumber) => {
       if (!lightbox || !lightboxImage) return;
       lightboxImage.src = button.dataset.gardenImage ?? '';
       lightboxImage.alt = button.querySelector('img')?.alt ?? 'Garden photograph';
+      if (lightboxCaption) {
+        const title = button.dataset.gardenTitle ?? '';
+        lightboxCaption.textContent = title;
+        lightboxCaption.hidden = !title;
+      }
       lightbox.showModal();
     });
   });
@@ -211,6 +218,8 @@ const gardeningImages = gardeningImageNumbers.map((imageNumber) => {
   .garden-lightbox { width: min(1100px, calc(100% - 32px)); max-width: none; height: min(88vh, 900px); padding: 0; overflow: hidden; border: 1px solid #65491f; border-radius: 16px; background: #0b0a08; box-shadow: 0 28px 90px rgba(0, 0, 0, .72); }
   .garden-lightbox::backdrop { background: rgba(0, 0, 0, .84); backdrop-filter: blur(5px); }
   .garden-lightbox img { width: 100%; height: 100%; display: block; object-fit: contain; }
+  .garden-lightbox-caption { position: absolute; z-index: 2; left: 50%; bottom: 18px; max-width: calc(100% - 48px); margin: 0; padding: 10px 16px; border: 1px solid rgba(231, 170, 71, .55); border-radius: 999px; color: #fff4df; background: rgba(12, 10, 7, .86); font-size: .9rem; font-weight: 750; text-align: center; transform: translateX(-50%); }
+  .garden-lightbox-caption[hidden] { display: none; }
   .garden-lightbox-close { position: absolute; z-index: 2; top: 14px; right: 14px; width: 42px; height: 42px; border: 1px solid #6a4b20; border-radius: 50%; color: #fff4df; background: rgba(12, 10, 7, .86); font-size: 1.7rem; line-height: 1; cursor: pointer; }
 
   .story .hero-container { max-width: 850px; }
