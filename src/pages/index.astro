@@ -35,10 +35,23 @@ const hotspots = [
   { label: 'About Raza', href: '/about-raza', left: 59.5, top: 87.2, width: 19.0, height: 7.0 },
   { label: 'Resume', href: '/resume', left: 78.8, top: 87.2, width: 18.8, height: 7.0 },
 ];
+
+const mobileLinks = [
+  { label: 'Technology', detail: 'Networks · Cloud · AI', href: '/technology', icon: '⌘' },
+  { label: 'The Builder Years', detail: 'Renovations · Trades', href: '/the-builder-years', icon: '⌂' },
+  { label: 'Workshop', detail: 'DIY · Electronics', href: '/workshop', icon: '◇' },
+  { label: 'Photography', detail: 'Galleries · Gear', href: '/photography', icon: '◎' },
+  { label: 'Reefing', detail: 'Reef tank · Livestock', href: '/reefing', icon: '✺' },
+  { label: 'Gardening', detail: 'Indoor · Outdoor', href: '/gardening', icon: '♧' },
+  { label: 'Garage', detail: 'Cars · Detailing', href: '/garage', icon: '▱' },
+  { label: 'Life & Family', detail: 'Travel · Goals', href: '/life-family', icon: '♙' },
+  { label: 'About Raza', detail: 'My story · Journey', href: '/about-raza', icon: '○' },
+  { label: 'Resume', detail: 'Experience · Skills', href: '/resume', icon: '▤' },
+];
 ---
 <BaseLayout title={content.seoTitle} description={content.seoDescription} hideChrome>
   <section class="image-homepage" aria-label="Built By Raza homepage">
-    <div class="artboard">
+    <div class="artboard desktop-artboard">
       <img
         src="/images/builtbyraza-homepage.png"
         alt="Built By Raza workspace showing technology, building, photography, aquarium, gardening, travel, and personal interests"
@@ -61,6 +74,53 @@ const hotspots = [
         ))}
       </nav>
     </div>
+
+    <div class="mobile-homepage">
+      <header class="mobile-home-header">
+        <a class="mobile-brand" href="/" aria-label="Built By Raza home"><span>BUILT BY</span> RAZA</a>
+        <div class="mobile-header-actions">
+          <a href="/resume">Resume</a>
+          <a href="/contact">Contact</a>
+        </div>
+      </header>
+
+      <div class="mobile-hero">
+        <img
+          src="/images/builtbyraza-homepage.png"
+          alt="Raza in his workspace surrounded by technology, photography, gardening and building projects"
+          width="1536"
+          height="1024"
+          fetchpriority="high"
+        />
+        <div class="mobile-hero-shade"></div>
+        <div class="mobile-hero-copy">
+          <p>TECHNOLOGY · HOMES · IDEAS</p>
+          <h1>Keep learning.<br />Keep building.</h1>
+          <a href="#explore">Explore my world <span aria-hidden="true">↓</span></a>
+        </div>
+      </div>
+
+      <nav class="mobile-category-nav" id="explore" aria-label="Explore Built By Raza">
+        <div class="mobile-section-heading">
+          <p>EXPLORE</p>
+          <h2>Built from curiosity.</h2>
+        </div>
+        <div class="mobile-link-grid">
+          {mobileLinks.map((item) => (
+            <a href={item.href}>
+              <span class="mobile-link-icon" aria-hidden="true">{item.icon}</span>
+              <span class="mobile-link-copy"><strong>{item.label}</strong><small>{item.detail}</small></span>
+              <span class="mobile-link-arrow" aria-hidden="true">→</span>
+            </a>
+          ))}
+        </div>
+      </nav>
+
+      <footer class="mobile-home-footer">
+        <p>SMALL STEPS BUILD BIG THINGS.</p>
+        <a href="/contact">Let’s connect <span aria-hidden="true">→</span></a>
+      </footer>
+    </div>
   </section>
 </BaseLayout>
 
@@ -75,6 +135,10 @@ const hotspots = [
     overflow-x: auto;
     overflow-y: hidden;
     background: #090909;
+  }
+
+  .mobile-homepage {
+    display: none;
   }
 
   .artboard {
@@ -151,6 +215,264 @@ const hotspots = [
   @media (min-aspect-ratio: 3 / 2) and (min-width: 960px) {
     .artboard {
       width: min(100vw, calc(100vh * 1.5));
+    }
+  }
+
+  @media (max-width: 767px) {
+    body {
+      overflow-x: hidden;
+    }
+
+    .image-homepage {
+      min-height: 100svh;
+      overflow: visible;
+      background: #0b0a08;
+    }
+
+    .desktop-artboard {
+      display: none;
+    }
+
+    .mobile-homepage {
+      display: block;
+      width: 100%;
+      min-height: 100svh;
+      color: #f7efe2;
+      background: #0b0a08;
+    }
+
+    .mobile-home-header {
+      position: sticky;
+      z-index: 20;
+      top: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 64px;
+      padding: 0 18px;
+      border-bottom: 1px solid rgba(224, 163, 62, 0.28);
+      background: rgba(11, 10, 8, 0.94);
+      backdrop-filter: blur(14px);
+    }
+
+    .mobile-brand {
+      color: #e4ad50;
+      font-size: 1.22rem;
+      font-weight: 850;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+    }
+
+    .mobile-brand span {
+      color: #f4ede3;
+      font-size: 0.7rem;
+      font-weight: 750;
+      letter-spacing: 0.18em;
+    }
+
+    .mobile-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .mobile-header-actions a {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      color: #d8d0c4;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .mobile-hero {
+      position: relative;
+      height: min(72svh, 680px);
+      min-height: 500px;
+      overflow: hidden;
+      border-bottom: 1px solid #49371e;
+    }
+
+    .mobile-hero > img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: 49% 38%;
+      transform: scale(1.14);
+    }
+
+    .mobile-hero-shade {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(5, 5, 4, 0.08) 22%, rgba(5, 5, 4, 0.42) 58%, #0b0a08 100%),
+        linear-gradient(90deg, rgba(5, 5, 4, 0.45), transparent 65%);
+    }
+
+    .mobile-hero-copy {
+      position: absolute;
+      z-index: 2;
+      right: 22px;
+      bottom: 34px;
+      left: 22px;
+    }
+
+    .mobile-hero-copy p,
+    .mobile-section-heading p,
+    .mobile-home-footer p {
+      margin: 0;
+      color: #e4ad50;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+    }
+
+    .mobile-hero-copy h1 {
+      max-width: 330px;
+      margin: 10px 0 24px;
+      font-size: clamp(2.5rem, 12vw, 4rem);
+      line-height: 0.98;
+      letter-spacing: -0.05em;
+      text-shadow: 0 3px 22px rgba(0, 0, 0, 0.75);
+    }
+
+    .mobile-hero-copy a {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      padding: 0 18px;
+      border: 1px solid #a97529;
+      border-radius: 5px;
+      color: #f7efe2;
+      background: rgba(14, 12, 9, 0.72);
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .mobile-category-nav {
+      padding: 58px 16px 64px;
+      scroll-margin-top: 64px;
+    }
+
+    .mobile-section-heading {
+      padding: 0 4px 26px;
+    }
+
+    .mobile-section-heading h2 {
+      margin: 8px 0 0;
+      font-size: 2rem;
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+    }
+
+    .mobile-link-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    .mobile-link-grid > a {
+      min-height: 78px;
+      display: grid;
+      grid-template-columns: 46px 1fr 24px;
+      gap: 13px;
+      align-items: center;
+      padding: 12px 14px;
+      border: 1px solid #49371e;
+      border-radius: 8px;
+      color: #f6eee1;
+      background: linear-gradient(135deg, #17140f, #100f0c);
+      text-decoration: none;
+      box-shadow: inset 0 1px rgba(255, 255, 255, 0.025);
+    }
+
+    .mobile-link-grid > a:active {
+      border-color: #d99c3d;
+      background: #21190e;
+    }
+
+    .mobile-link-icon {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(224, 163, 62, 0.48);
+      border-radius: 50%;
+      color: #e4ad50;
+      font-size: 1.45rem;
+      line-height: 1;
+    }
+
+    .mobile-link-copy {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mobile-link-copy strong {
+      font-size: 0.86rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .mobile-link-copy small {
+      margin-top: 3px;
+      overflow: hidden;
+      color: #a99e8e;
+      font-size: 0.72rem;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .mobile-link-arrow {
+      color: #dfa84d;
+      font-size: 1.15rem;
+    }
+
+    .mobile-home-footer {
+      padding: 34px 20px 42px;
+      border-top: 1px solid #49371e;
+      text-align: center;
+      background: #080806;
+    }
+
+    .mobile-home-footer p {
+      color: #9f927f;
+    }
+
+    .mobile-home-footer a {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 18px;
+      color: #e4ad50;
+      font-weight: 750;
+      text-decoration: none;
+    }
+  }
+
+  @media (min-width: 520px) and (max-width: 767px) {
+    .mobile-link-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    .hotspot {
+      transition: none;
     }
   }
 </style>
