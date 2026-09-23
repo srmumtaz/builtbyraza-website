@@ -10,10 +10,10 @@ interface Props {
 
 const { data } = Astro.props;
 
-const gardeningImageNumbers = [20, ...Array.from({ length: 19 }, (_, index) => index + 1)];
+const gardeningImageNumbers = [21, 20, ...Array.from({ length: 19 }, (_, index) => index + 1)];
 
 const gardeningImages = gardeningImageNumbers.map((imageNumber) => {
-  const title = imageNumber === 20 ? 'Ficus bonsai on my work desk' : undefined;
+  const title = imageNumber === 21 ? 'Lithops - living stones' : imageNumber === 20 ? 'Ficus bonsai on my work desk' : undefined;
 
   return {
     src: `/images/gardening/gallery/garden-${String(imageNumber).padStart(2, '0')}.webp`,
@@ -121,7 +121,7 @@ const gardeningImages = gardeningImageNumbers.map((imageNumber) => {
             </div>
             <div class="garden-gallery">
               {gardeningImages.map((image, index) => (
-                <button class:list={['garden-photo', { wide: index === 4 || index === 13 }]} type="button" data-garden-image={image.src} data-garden-title={image.title} aria-label={`Enlarge ${image.alt}`}>
+                <button class:list={['garden-photo', { wide: index === 4 || index === 13, titled: !!image.title }]} type="button" data-garden-image={image.src} data-garden-title={image.title} aria-label={`Enlarge ${image.alt}`}>
                   <img src={image.src} alt={image.alt} loading={index < 4 ? 'eager' : 'lazy'} decoding="async" />
                   <span>{image.title ?? 'View photo'}</span>
                 </button>
@@ -214,6 +214,7 @@ const gardeningImages = gardeningImageNumbers.map((imageNumber) => {
   .garden-photo span { position: absolute; right: 14px; bottom: 14px; padding: 7px 11px; border: 1px solid rgba(231, 170, 71, .55); border-radius: 999px; color: #f6d69e; background: rgba(10, 9, 7, .78); font-size: .7rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; opacity: 0; transform: translateY(6px); transition: opacity .25s ease, transform .25s ease; }
   .garden-photo:hover img { transform: scale(1.035); filter: brightness(.78); }
   .garden-photo:hover span, .garden-photo:focus-visible span { opacity: 1; transform: translateY(0); }
+  .garden-photo.titled span { opacity: 1; transform: translateY(0); }
   .garden-photo:focus-visible { outline: 2px solid #e7aa47; outline-offset: 3px; }
   .garden-lightbox { width: min(1100px, calc(100% - 32px)); max-width: none; height: min(88vh, 900px); padding: 0; overflow: hidden; border: 1px solid #65491f; border-radius: 16px; background: #0b0a08; box-shadow: 0 28px 90px rgba(0, 0, 0, .72); }
   .garden-lightbox::backdrop { background: rgba(0, 0, 0, .84); backdrop-filter: blur(5px); }
