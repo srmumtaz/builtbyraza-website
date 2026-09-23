@@ -10,10 +10,10 @@ interface Props {
 
 const { data } = Astro.props;
 
-const gardeningImageNumbers = [21, 20, ...Array.from({ length: 19 }, (_, index) => index + 1)];
+const gardeningImageNumbers = [22, 21, 20, ...Array.from({ length: 19 }, (_, index) => index + 1)];
 
 const gardeningImages = gardeningImageNumbers.map((imageNumber) => {
-  const title = imageNumber === 21 ? 'Lithops - living stones' : imageNumber === 20 ? 'Ficus bonsai on my work desk' : undefined;
+  const title = imageNumber === 22 ? 'Bathroom collection' : imageNumber === 21 ? 'Lithops - living stones' : imageNumber === 20 ? 'Ficus bonsai on my work desk' : undefined;
 
   return {
     src: `/images/gardening/gallery/garden-${String(imageNumber).padStart(2, '0')}.webp`,
