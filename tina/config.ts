@@ -175,6 +175,8 @@ export default defineConfig({
               { type: "string", name: "eyebrow", label: "Eyebrow", required: true },
               { type: "string", name: "heading", label: "Heading", required: true, ui: { component: "textarea" } },
               { type: "string", name: "introduction", label: "Introduction", required: true, ui: { component: "textarea" } },
+              { type: "image", name: "image", label: "Hero image" },
+              { type: "string", name: "imageAlt", label: "Hero image description" },
               {
                 type: "object",
                 name: "meta",
