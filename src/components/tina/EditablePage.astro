@@ -10,10 +10,31 @@ interface Props {
 
 const { data } = Astro.props;
 
-const gardeningImageNumbers = [23, 22, 21, 20, ...Array.from({ length: 19 }, (_, index) => index + 1)];
+const gardeningImageNumbers = [
+  ...Array.from({ length: 10 }, (_, index) => index + 24),
+  23, 22, 21, 20,
+  ...Array.from({ length: 19 }, (_, index) => index + 1),
+];
+
+const gardeningTitles: Record<number, string> = {
+  20: 'Ficus bonsai on my work desk',
+  21: 'Lithops - living stones',
+  22: 'Bathroom collection',
+  23: 'My houseplant collection',
+  24: 'A cutting taking root',
+  25: 'Peace lily in bloom',
+  26: 'Patterned tropical leaves',
+  27: 'Variegated foliage',
+  28: 'New growth',
+  29: 'Plants and garden tools',
+  30: 'Colorful foliage collection',
+  31: 'Young pitcher plant',
+  32: 'Pitcher plant close-up',
+  33: 'String of hearts',
+};
 
 const gardeningImages = gardeningImageNumbers.map((imageNumber) => {
-  const title = imageNumber === 23 ? 'My houseplant collection' : imageNumber === 22 ? 'Bathroom collection' : imageNumber === 21 ? 'Lithops - living stones' : imageNumber === 20 ? 'Ficus bonsai on my work desk' : undefined;
+  const title = gardeningTitles[imageNumber];
 
   return {
     src: `/images/gardening/gallery/garden-${String(imageNumber).padStart(2, '0')}.webp`,
@@ -127,7 +148,7 @@ const gardeningImages = gardeningImageNumbers.map((imageNumber) => {
             </div>
             <div class="garden-gallery">
               {gardeningImages.map((image, index) => (
-                <button class:list={['garden-photo', { wide: index === 4 || index === 13, titled: !!image.title }]} type="button" data-garden-image={image.src} data-garden-title={image.title} aria-label={`Enlarge ${image.alt}`}>
+                <button class:list={['garden-photo', { wide: index === 2 || index === 13, titled: !!image.title }]} type="button" data-garden-image={image.src} data-garden-title={image.title} aria-label={`Enlarge ${image.alt}`}>
                   <img src={image.src} alt={image.alt} loading={index < 4 ? 'eager' : 'lazy'} decoding="async" />
                   <span>{image.title ?? 'View photo'}</span>
                 </button>
